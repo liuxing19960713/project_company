@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>问诊记录</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="headerbar-nav clearfix">
+    <ul class="record-header">
+        <li>
+            <a href="{$Think.WEB_PATH}wechat/consultationRecord" class="record">
+                当前服务
+            </a>
+        </li>
+        <li>
+            <a class="record active">
+                历史服务
+            </a>
+        </li>
+    </ul>
+</nav>
+<section class="record-list" id="app" style="display: none">
+    <div class="record-info clearfix" v-for="item in list">
+        <dl class="record-info-list" @click="enterChatRecord(item.con_id,item.d_id)">
+            <dd>{{item.real_name}}</dd>
+            <dd>{{item.department}}</dd>
+            <dd>图文咨询</dd>
+            <span class="fr line-4rem grap float_fr">{{item.create_time|timePaser}}</span>
+        </dl>
+        <p class="record-detail">{{item.content}}</p>
+        <div class="href_box">
+            <a class="record-asset" @click="evaluate(item.con_id,item.d_id)">
+                <span class="icon-asset_history"><i></i></span>
+                评价TA
+            </a>
+        </div>
+    </div>
+</section>
+
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat//moment.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/history_consultatiion.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+@subject-color: #a17af2;
+//文章分享页
+.AppCommonBox {
+    width: 20rem;
+    .AppHeader {
+        z-index: 999;
+        width: 20rem; height: 1.2rem;
+        position: fixed;
+        top: 0; left: 0;
+        color: #fff;
+        background-color: @subject-color;
+        padding: 0.75rem 0;
+        text-align: center;
+        .Title {
+            margin: 0 auto;
+            display: block;
+            max-width: 14rem;
+            font-size: 0.85rem;
+            //溢出省略号
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+    .AppHeader2 {
+        width: 20rem; height: 1.2rem;
+        padding: 0.75rem 0;
+    }
+}
+//App下载
+.Download {
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 18.6rem; height: 2.4rem;
+    line-height: 2.4rem;
+    padding: 0 0.7rem;
+    background-color:rgba(161,122,242,0.9);
+    color: #fff;
+    font-size: 0.65rem;
+    .ico {
+        float: left;
+        width: 2rem;
+        margin: 0.2rem 0.5rem 0.2rem 0;
+        border-radius: 0.5rem;
+    }
+    .bt {
+        margin: 0.4rem 0;
+        padding: 0 0.6rem;
+        line-height: 1.6rem;
+        float: right;
+        color: @subject-color;
+        background-color: #fff;
+        border-radius: 0.3rem;
+    }
+}
+.Download2 {
+    width: 20rem; height: 2.4rem;
+}
+
+
+

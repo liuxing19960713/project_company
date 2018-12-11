@@ -1,0 +1,89 @@
+.page-demo-upload{
+  tr{
+    .progress{
+      width: 96%;
+      display: inline-block;
+    }
+    .progress-bar {
+      min-height: 20px;
+      float: none;
+    }
+    .progress,.progress div{
+      height: 20px;
+    }
+    .progress .chunk-status {
+      position: absolute;
+      left: 24px;
+      top: 0;
+    }
+    .progressCancel{
+      display: inline-block;
+      float: right;
+      position: relative;
+      z-index: 100;
+      color: #333;
+      text-decoration: none;
+    }
+  }
+  td{
+    .Wrapper {
+      margin-top: 20px;
+      text-align: center;
+      overflow: hidden;
+      .infoWrapper{
+        width:50%;
+        height:100px;
+        margin-left: 10px;
+        text-align: left;
+        line-height: 25px;
+        a:first-child{
+          margin-right: 10px;
+        }
+        &.default {
+          margin-top: 20px;
+          text-align: left;
+          img{
+            width:100px;
+            height:100px;
+          }
+        }
+      }
+    }
+    .imgWrapper {
+      position: relative;
+      width:100px;
+      height: 100px;
+      .linkWrapper {
+        position: absolute;
+        left: 15px;
+        top: 0;
+        width:100px;
+        height: 100px;
+        cursor: pointer;
+        a{
+          line-height: 50px;
+
+        }
+      }
+    }
+  }
+  table td .hash {
+    margin-bottom: 20px;
+  }
+  pre  {
+    margin-top: 20px;
+  }
+  .status {
+    position: absolute;
+    width: 100%;
+    top:0;
+    left: 24px;
+  }
+  .tip {
+    padding-left: 30px;
+    p {
+      line-height: 1;
+    }
+  }
+}
+

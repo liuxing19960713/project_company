@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>个人中心-编辑信息</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+</head>
+<body>
+<form id="name">
+    <section class="feedback edit-feedback">
+        <input type="text" class="edit-name" v-model="nickName" placeholder="请填写姓名" />
+        <span class="name_verification">姓名长度不可以大于10个字符</span>
+        <div class="edit-name_button">
+            <input class="submit-btn" type="button"  @click="update" value="提交">
+        </div>
+    </section>
+</form>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/pop-up_layer.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/user-edit.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/userEditName.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>问诊记录</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+</head>
+<body>
+<nav class="headerbar-nav clearfix">
+    <ul class="record-header">
+        <li>
+            <a  class="record active">
+                当前服务
+            </a>
+        </li>
+        <li>
+            <a href="{$Think.WEB_PATH}wechat/consultationHistRecord" class="record">
+                历史服务
+            </a>
+        </li>
+    </ul>
+</nav>
+<section class="record-list" id="app" style="display: none">
+    <div class="record-info clearfix" v-for="item in list" @click="enterChatRecord(item.con_id,item.d_id)">
+        <h3 class="sub-title">{{item.content}}<span class="fr grap small float_fr"></span></h3>
+        <dl class="record-info-list">
+            <dt class="record-doctor-head">
+                <img :src="cdnServer+item.avatar">
+            </dt>
+            <dd>{{item.real_name}}</dd>
+            <dd>{{item.department}}</dd>
+            <dd>图文咨询</dd>
+            <span class="fr line-4rem grap float_fr">{{item.create_time|timePaser}}</span>
+        </dl>
+    </div>
+    <!--<div class="record-info clearfix">-->
+        <!--<h3 class="sub-title">老是咳嗽，连续三天，怎么办啊<span class="fr grap small blue_dot float_fr">●</span></h3>-->
+        <!--<dl class="record-info-list">-->
+            <!--<dt class="record-doctor-head">-->
+                <!--<img src="../images/head_portrait.png">-->
+            <!--</dt>-->
+            <!--<dd>罗小鹏</dd>-->
+            <!--<dd>男科</dd>-->
+            <!--<dd>图文咨询</dd>-->
+            <!--<span class="fr line-4rem grap float_fr">11月09日 23:12</span>-->
+        <!--</dl>-->
+    <!--</div>-->
+</section>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat//moment.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/current_consultation.js"></script>
+</body>
+</html>

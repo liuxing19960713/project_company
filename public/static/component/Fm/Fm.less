@@ -1,0 +1,73 @@
+// 变量设置
+@subject-color: #ffffff;
+@PopCover-color: rgba(252, 252, 252, 0.8);
+@bt-0: #d51a1a;
+@bt-1: #44c707;
+// 富文本编辑器类组件样式
+#FmDitor {
+    border: 1px solid #ccc;
+}
+// 弹出层类组件样式
+#PopCover {
+    display: none;
+    z-index: 9;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: @PopCover-color;
+    // 按钮组件
+    .D-btn {
+        position: absolute;
+        top: 5px; right: 10px;
+        color: @bt-0;
+        font-size: 18px;
+    }
+    .PopCoverBtn {
+        position: absolute;
+        border-radius: 5px;
+    }
+    .PopCoverBtn:hover {
+        opacity: 0.8;
+    }
+    .ConfirmTab1,.ConfirmTab2 {
+        color: #ffffff;
+        min-width: 60px; 
+        min-height: 30px; 
+    }
+    .ConfirmTab1 {
+        background-color: @bt-1;
+        bottom: 20px; left: 50px;
+    }  
+    .ConfirmTab2 {
+        background-color: @bt-0;
+        bottom: 20px; right: 50px;
+    }
+    .D-btn:hover {
+        cursor:pointer;
+    }
+    .bt-0-color {
+        color: @bt-0;
+        background-color: @bt-0;
+    }
+    // 单选组件
+    #Confirm {
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        background-color: @subject-color; 
+        border: 1px solid #ddd;
+        width: 30%; height: 20%;
+        max-width: 260px; max-height: 120px;
+        padding: 30px 5px;
+        margin: 20% auto;
+        text-align: center;
+    }
+    //图片放大组件
+    .ImgMag2 {
+        width: 80%;
+        position: fixed;
+        top: 0; right: 0; bottom: 0; left: 0;
+        margin: 20px auto;
+    }
+}
+

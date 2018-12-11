@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑案例</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑成功率文章</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="text-right">姓名</th>
+                            <td>{$conProfile.name}</td>
+                            <th class="text-right">年龄</th>
+                            <td>{$conProfile.age}&nbsp;岁</td>
+                            <td rowspan="4" width="150px" height="150px">
+                                {if condition="!empty($userInfo['avatar'])"}
+                                <a href="javascript:void(0)" class="js-thumb" data-thumb="{$userInfo.avatar}"> <img src="{$userInfo.avatar}" width="150px" height="150px" /></a>
+                                {else/}
+                                <a href="javascript:void(0)" class="js-thumb" data-thumb="http://ogu99wuzj.bkt.clouddn.com/o_1bfof6snt951c32j8i1sjnm67g.png"><img width="150px" height="150px"src="http://ogu99wuzj.bkt.clouddn.com/o_1bfof6snt951c32j8i1sjnm67g.png" /></a>
+                                {/if}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">性别</th>
+                            <td>{if condition ="$userInfo.gender eq 'male'"}男{else /}女{/if}</td>
+                            <th class="text-right">职业</th>
+                            <td>{$userInfo.career}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">手机号 </th>
+                            <td>{$userInfo.mobile}</td>
+                            <th class="text-right">血型 </th>
+                            <td>{$conProfile.blood_type} &nbsp;型</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">婚姻状况 </th>
+                            <td>{$userInfo.marriage}</td>
+                            <th class="text-right">问诊报告创建时间</th>
+                            <td >{$info.create_time|date='Y-m-d H:i:s',###}</td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="5" class="text-center" style="font-size:20px;">用户个人问诊报告详细信息</th>
+                        </tr>
+                        <tr>
+                            <td class="text-left" width="150px;"><b>是否饮酒:</b>&nbsp;&nbsp;{if condition ="$conProfile.drink eq 'yes'"}是{else /}否{/if}</td>
+
+                            <td class="text-left"><b>是否有生育史:</b>&nbsp;&nbsp;{if condition ="$conProfile.is_born eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>生育方式:</b>&nbsp;&nbsp;{$conProfile.born_type}</td>
+                            <td colspan="2"><b>生育时间：</b>&nbsp;&nbsp;{$conProfile.born_time}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left"><b>是否动过手术：</b>{if condition ="$conProfile.operation_history eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>是否抽烟：</b>{if condition ="$conProfile.smoke eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>是否过敏:</b>&nbsp;&nbsp;{if condition ="$conProfile.is_allergy eq 'yes'"}是{else /}否{/if}</td>
+                            <td colspan="2"><b>药物过敏史：</b>{$conProfile.allergy}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left"><b>是否有遗传病史:</b>{if condition ="$conProfile.has_genetic_disease eq 'yes'"}是{else /}否{/if}</td>
+                            <td colspan="4"><b>遗传病描述：</b>{$conProfile.genetic_disease}</td>
+                        </tr>
+                        {if condition ="$userInfo.gender eq 'male'"}
+                        <tr>
+                            <td class="text-left"><b>是否手淫:</b>{if condition ="$conProfile.masturbation_history eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>精子浓度:</b>{$conProfile.semen_density}</td>
+                            <td class="text-right"><b>精液量:</b>{$conProfile.semen_volume}</td>
+                            <td colspan="2"></td>
+                        </tr>
+                        {/if}
+                        <tr>
+                            <td class="text-left"><b>禁欲天数：</b>{$conProfile.abstinent_days} 天</td>
+                            <td><b>备孕时间：</b>{$conProfile.prepare_pregnant_time} 天</td>
+                            <th class="text-right"></th>
+                            <td colspan="2"><b>诊断科室：</b>{$conProfile.department}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><b>病情描述:</b></td>
+                            <td colspan="4">{$conProfile.content}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">医生诊断信息：</th>
+                            <td colspan="4">{$info.diagnose}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">医生建议：</th>
+                            <td colspan="4">{$info.advise}</td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <b>病情咨询方式：</b>{$conInfo.type} <b style="margin-left:20px;">问诊状态：</b>{$conInfo.state}
+                                <b style="margin-left:20px;">咨询总时间</b>：{$conInfo.total_time|date='H',###}时{$conInfo.total_time|date='i',###}分
+                                <b style="margin-left:20px;">是否转诊：</b>{if condition ="$conInfo.is_extend eq 'yes'"}是{else /}否{/if}
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th class="text-right">咨询费用：</th>
+                            <td>{$conInfo.money} &nbsp;元</td>
+                            <td class="text-right"><b>咨询医生详细信息：</b></td>
+                            <td colspan="2"><a href="{:url('Doctor/details')}?id={$doctorInfo.doctor_id}">{$doctorInfo.nick_name}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><b>医院名称：</b></td>
+                            <td class="text-left">{$doctorInfo.hospital}</td>
+                            <td class="text-right"><b>医生职称：</b></td>
+                            <td colspan="2">{$doctorInfo.title}</td>
+
+                        </tr>
+                        <tr>
+                            <td class="text-right"><b>服务评分：</b></td>
+                            <td>{$conInfo.grade} </td>
+                            <td class="text-right"><b>服务评分或患者印象：</b></td>
+                            <td colspan="2">{$conInfo.impression}</td>
+                        </tr>
+                    </table>
+                    <div class="form-group" style="margin-top:20px;">
+                        <div class="col-sm-4 col-sm-offset-8">
+                            <a class="btn btn-default" href="javascript:history.back(-1)" style="float:right;">返回</a>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{block name="baseJS"}{include file="base/js" /}{/block}
+<script>
+    require(['app','editor','qiniuUploader', 'increase/edit'],function (app, editor,qiniuUploader, create){
+        qiniuUploader($("#imgshow"), $("#img_url"), false);
+        editor('content');
+        create();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>个人中心-编辑信息</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+</head>
+<body>
+<form id="vocation">
+    <section class="feedback edit-feedback">
+        <input type="text" class="edit-vocation" v-model="vocation" placeholder="请填写职业" />
+        <span class="vocation_verification">职业长度不可以超过10个字符</span>
+        <div class="edit-vocation_button">
+            <input class="submit-btn" type="button"  @click="update" value="提交">
+        </div>
+    </section>
+</form>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/pop-up_layer.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/user-edit.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/userEditVocation.js"></script>
+</body>
+</html>

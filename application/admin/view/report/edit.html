@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑文章</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>举报帖子</h5>
+                </div>
+                <div class="ibox-content">
+                    <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+                        <input type="hidden" name="report_type_id" value="{$show.report_type_id}"/>
+                        <input type="hidden" name="report_id" value="{$show.report_id}"/>
+                        <input type="hidden" name="report_type" value="{$show.report_type}"/>
+                        {if condition="$show.report_type=='post'"}
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">文章标题：</label>
+                            <label class="col-sm-7 control-label" style="text-align:left; padding-left:0;">{$show.postInfo.title}</label>
+                        </div>
+                        {/if}
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">内容：</label>
+                            {if condition="$show.report_type=='post'"}
+                                <div class="input-group col-sm-7" id="editor-container">
+                                    {$show.postInfo.content}
+                                </div>
+                            {else/}
+                            	<label class="col-sm-7 control-label" style="text-align:left; padding-left:0;">{$show.commentInfo.content}</label>
+                            {/if}
+                        </div> 
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">文章内容：</label>
+                            <div class="input-group col-sm-7" style="padding-top:5px;">
+                                <label style="float:left; margin-right:15px;"><input type="radio" class="rdo" name="report_status" value="已处理" > <span class="spans">已处理</span></label>
+                                <label style="float:left; margin-right:15px;"><input type="radio" class="rdo" name="report_status" value="待处理" > <span class="spans">待处理</span></label>
+                                <label><input type="radio" class="rdo" name="report_status" value="" > <span class="spans">通过</span></label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" type="submit">确认提交</button>
+                        		<a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{block name="baseJS"}{include file="base/js" /}{/block}
+<script>
+    require(['app', 'report/edit'],function (app, create){
+        create();
+        $("input[name='report_status'][value='{$show.report_status}']").attr("checked",true);
+    });
+</script>
+</body>
+</html>

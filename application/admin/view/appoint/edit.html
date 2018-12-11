@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑案例</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑成功率文章</h5>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="text-right">姓名</th>
+                            <td>{$info.real_name}</td>
+                            <th class="text-right">年龄</th>
+                            <td>{$info.age}&nbsp;岁</td>
+                            <td rowspan="4" width="150px" height="150px">
+                                {if condition="!empty($info['avatar'])"}
+                                <a href="javascript:void(0)" class="js-thumb" data-thumb="{$info.avatar}"> <img src="{$info.avatar}" width="150px" height="150px" /></a>
+                                {else/}
+                                <a href="javascript:void(0)" class="js-thumb" data-thumb="http://ogu99wuzj.bkt.clouddn.com/o_1bfof6snt951c32j8i1sjnm67g.png"><img width="150px" height="150px"src="http://ogu99wuzj.bkt.clouddn.com/o_1bfof6snt951c32j8i1sjnm67g.png" /></a>
+                                {/if}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">性别</th>
+                            <td>{if condition ="$info.gender eq 'male'"}男{else /}女{/if}</td>
+                            <th class="text-right">职业</th>
+                            <td>{$info.career}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">手机号 </th>
+                            <td>{$info.mobile}</td>
+                            <th class="text-right">血型 </th>
+                            <td>{$info.blood_type} &nbsp;型</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">婚姻状况 </th>
+                            <td>{$info.marriage}</td>
+                            <th class="text-right">挂单号创建时间</th>
+                            <td >{$info.create_time|date='Y-m-d H:i:s',###}</td>
+                        </tr>
+                        <tr>
+                            <th colspan="5" class="text-center" style="font-size:20px;">用户个人挂号详细信息</th>
+                        </tr>
+                        <tr>
+                            <th class="text-right">预约时间</th>
+                            <td colspan="4">{$info.appoint_time|date='Y-m-d H:i:s',###}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">预计咨询费用：</th>
+                            <td>{$info.money} &nbsp;元</td>
+                            <td class="text-right"><b>咨询医生详细信息：</b></td>
+                            <td colspan="2"><a href="{:url('Doctor/details')}?id={$info.doctor_id}">{$info.nick_name}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><b>医院名称：</b></td>
+                            <td class="text-left">{$info.hospital}</td>
+                            <td class="text-right"><b>医生职称:</b></td>
+                            <td colspan="2">{$info.title}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-right">预约状态：</th>
+                            <td colspan="4">
+                                {switch name="$info['status']"}
+                                    {case value="yes" break="1"}
+                                    预约成功
+                                    {/case}
+                                    {case value="no" break="1"}
+                                    预约失败
+                                    {/case}
+                                    {case value="wait" break="1"}
+                                    预约中....
+                                    {/case}
+                                    {case value="end" break="1"}
+                                    预约结束
+                                    {/case}
+                                {/switch}
+                            </td>
+                        </tr>
+                        {if condition="$info['status'] eq 'no'"}
+                        <tr>
+                            <th class="text-right">拒绝原因：</th>
+                            <td colspan="4">{$info.reason}</td>
+                        </tr>
+                        {/if}
+
+                        {if condition="$info['status'] neq 'no'"}
+                        <tr>
+                            <th class="text-center" rowspan="8" style="vertical-align: middle;"><h3>用户个人病历详情：</h3></th>
+                        </tr>
+                        <tr>
+                            <td class="text-left" width="150px;"><b>是否饮酒:</b>&nbsp;&nbsp;{if condition ="$info.drink eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>是否有生育史:</b>&nbsp;&nbsp;{if condition ="$info.is_born eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>生育方式:</b>&nbsp;&nbsp;{$info.born_type}</td>
+                            <td colspan=""><b>生育时间：</b>&nbsp;&nbsp;<br/>{if condition ="$info.born_time neq ''"}{$info.born_time|date='Y-m-d H:i',###}{/if}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left"><b>是否动过手术：</b>{if condition ="$info.operation_history eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>是否抽烟：</b>{if condition ="$info.smoke eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>是否过敏:</b>&nbsp;&nbsp;{if condition ="$info.is_allergy eq 'yes'"}是{else /}否{/if}</td>
+                            <td colspan=""><b>药物过敏史：</b>{$info.allergy}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left"><b>是否有遗传病史:</b>{if condition ="$info.has_genetic_disease eq 'yes'"}是{else /}否{/if}</td>
+                            <td colspan="3"><b>遗传病描述：</b>{$info.genetic_disease}</td>
+                        </tr>
+                        {if condition ="$info.gender eq 'male'"}
+                        <tr>
+                            <td class="text-left"><b>是否手淫:</b>{if condition ="$info.masturbation_history eq 'yes'"}是{else /}否{/if}</td>
+                            <td class="text-left"><b>精子浓度:</b>{$info.semen_density}</td>
+                            <td class="text-right"><b>精液量:</b>{$info.semen_volume}</td>
+                            <td colspan=""></td>
+                        </tr>
+                        {/if}
+                        <tr>
+                            <td class="text-left"><b>禁欲天数：</b>{$info.abstinent_days} 天</td>
+                            <td><b>备孕时间：</b>{$info.prepare_pregnant_time} 天</td>
+                            <td colspan="2"><b>诊断科室：</b>{$info.department}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><b>病情描述：</b>{$info.content}</td>
+                        </tr>
+                        {/if}
+                    </table>
+                    <div class="form-group" style="margin-top:20px;">
+                        <div class="col-sm-4 col-sm-offset-8">
+                            <a class="btn btn-default" href="javascript:history.back(-1)" style="float:right;">返回</a>
+                        </div>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{block name="baseJS"}{include file="base/js" /}{/block}
+<script>
+    require(['app','editor','qiniuUploader', 'increase/edit'],function (app, editor,qiniuUploader, create){
+        qiniuUploader($("#imgshow"), $("#img_url"), false);
+        editor('content');
+        create();
+    });
+</script>
+</body>
+</html>

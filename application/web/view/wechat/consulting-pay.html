@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>付费咨询</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+</head>
+<body style="background: #f5f5f5">
+<section class="doctor-detail" id="app" style="display: none">
+    <section class="doctor-infoBox doctor-infoBox_intro doctor-infoBox-top">
+        <h3 class="sub-title1">{{item.real_name}}</h3><span class="fr ">{{item.department2}}&nbsp;{{item.title}}</span>
+        <p>{{item.hospital}}<span class="price_degree">￥{{item.image_price}}/次</span></p>
+    </section>
+    <section class="doctor-infoBox">
+        <h3 class="sub-title1">图文咨询费用<span class="price price_degree">{{item.image_price}}元</span></h3>
+    </section>
+    <section class="doctor-infoBox download_cue">
+        <ul class="download-trip clearfix">
+            <li class="pay-icon"><i></i></li>
+            <li class="dowmload_text">请下载手机APP，可通过微信或支付宝进行便捷支付，更有机会获得现金优惠券哦～</li>
+        </ul>
+        <button  class="download-btn">下载APP</button>
+    </section>
+
+</section>
+
+
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/consuliting_pay.js"></script>
+</body>
+</html>

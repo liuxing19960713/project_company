@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>咨询医生</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/sorting.css" rel="stylesheet">
+</head>
+<body style="background: #f2f2f2;position: relative">
+<nav  class="headerbar-nav clearfix">
+    <ul>
+        <li class="current-address"><span id="span_city"></span></li>
+        <li class="current-medical"><span id="span_department"></span></li>
+    </ul>
+</nav>
+
+<section class="sorting-address">
+    <ul id="province" name="province" class="cascade_drop_down"></ul>
+    <ul id="city" name="city" class="cascade_drop_down"></ul>
+</section>
+<section class="sorting-medical">
+    <ul id="medical1" name="province" class="cascade_drop_down"></ul>
+    <ul id="medical2" name="city" class="cascade_drop_down"></ul>
+</section>
+<div class="search-null1" style="display: none">
+    <span class="search-null-icon"><i class="dk-null"></i></span>
+    <p class="search-null-trip">很抱歉，没有找到符合要求的医生</p>
+</div>
+<section id="app" class="doctor-list" style="display: none">
+    <ul class="doctor-group" v-for="item in list" @click="onClick(item.d_id)" v-if="item.is_open_image=='yes'">
+            <li class="clearfix">
+                <div class="doctor-head list_head">
+                    <img :src="cdnServer+item.avatar" alt="doctor"/>
+                </div>
+                <div class="doctor-info">
+                    <p><strong>{{item.real_name}}</strong><span class="doctor_label">&nbsp;{{item.department_name}}&nbsp;{{item.title}}</span></p>
+                    <p class="doctor-hospital">{{item.hospital}}</p>
+                    <p class="tworow small">{{item.good_at}}</p>
+                    <p><span class="price_doctor">¥{{item.image_price}}/次</span><span class="purchase_number">&nbsp;{{item.service_times}}人购买</span></p>
+                </div>
+            </li>
+    </ul>
+</section>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/data.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/doctor_list.js"></script>
+</body>
+</html>

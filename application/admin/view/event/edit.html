@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑案例</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑活动</h5>
+                </div>
+                <div class="ibox-content">
+                    <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{$show.event_id}"/>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">医生ID：</label>
+                            <div class="input-group col-sm-1">
+                                <input id="views_count" type="text" class="form-control" name="doctor_id" value="{$show.doctor_id}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">医生姓名：</label>
+                            <label class="col-sm-7 control-label" style="text-align:left; padding-left:0;">{$show.doctor_name}</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">医生照片：</label>
+                            <label class="col-sm-7 control-label" style="text-align:left; padding-left:0;">
+                            	{if condition="!empty($show['doctor_avatar'])"}
+                                <img src="{$show.doctor_avatar}" width="135" />
+                                {else/}
+                                <img width="135" src="http://ogu99wuzj.bkt.clouddn.com/o_1bfof6snt951c32j8i1sjnm67g.png" />
+                                {/if}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">活动标题：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="title" type="text" class="form-control" name="title" value="{$show.title}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">视频地址：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="title" type="text" class="form-control" name="video_url"  value="{$show.video_url}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">参与人数：</label>
+                            <div class="input-group col-sm-2">
+                                <input id="join_count" type="text" class="form-control" name="join_count" value="{$show.join_count}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">状态：</label>
+                            <div class="input-group col-sm-7" style="padding-top:5px;">
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="event_status" value="进行中" > <span class="spans">进行中</span></label>
+                                <label><input type="radio" class="rdo" name="event_status" value="已结束" > <span class="spans">已结束</span></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">开始时间~~结束时间：</label>
+                            <div class="input-group col-sm-7">
+                                <input class="form-control" type="text" id="start_time" placeholder="请选择"  name="start_time" style="width:200px" value="{$show.start_time|date='Y-m-d H:i:s',###}" readonly/>
+                                <span class="col-lg-3" style="width: 50px;line-height:30px;">--</span>
+                                <input class="form-control" id="end_time"  type="text" name="end_time" style="width:200px" value="{$show.end_time|date='Y-m-d H:i:s',###}" readonly/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" type="submit">确认提交</button>
+                        		<a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{block name="baseJS"}{include file="base/js" /}{/block}
+<script>
+    require(['app', 'jedate', 'event/edit'],function (app, jedates, create){
+        $("#start_time").jeDate({
+            isinitVal:true,
+            //festival:true,
+            ishmsVal:false,
+            minDate: '2016-06-16 23:59',
+            maxDate: $.nowDate({DD:5}),
+            format:"YYYY-MM-DD hh:mm:ss",
+            zIndex:3000,
+        });
+
+        $("#end_time").jeDate({
+            isinitVal:true,
+            //festival:true,
+            ishmsVal:false,
+            minDate: '2016-06-16 23:59',
+            maxDate: $.nowDate({DD:5}),
+            format:"YYYY-MM-DD hh:mm:ss",
+            zIndex:3000,
+        });
+        $("input[name='event_status'][value='{$show.event_status}']").attr("checked",true);
+        create();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+/* APP搜索关键词管理css */
+.bt2 {
+    border-radius: 4px;
+}
+.header {
+    padding: 20px 0;
+}
+#filter {
+    height: 32px;
+    margin-left: 1%;
+    border: 1px solid #e4eaec;
+}
+#Body {
+    width: 98%;
+    margin: 20px 1%;
+}
+#KinBox {
+    width: 70%;
+    margin: 10px auto;
+}
+.bt1 {
+    float: right;
+    color: #fff; 
+    font-size: 20px;
+    margin: 10px;
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    background-color: rgb(66, 160, 61);
+}
+.bt1:hover {
+    color: rgb(66, 160, 61);
+    border: 2px solid rgb(66, 160, 61);
+    background-color: #fff;
+}
+input[name="STitle"] {
+    display: block;
+    text-align: center;
+    width: 200px;
+    padding: 5px 10px;
+    margin: 0 auto;
+    border: 1px solid #b5b5b5;
+}

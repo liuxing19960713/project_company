@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$title}</title>
+    <style>
+        .title { width: 100%; text-align: center; color: rgb(90, 90, 90); }
+        .Nav { display: block; width: 1200px; margin: 0 auto; border-collapse:collapse;}
+        .Nav tr { text-align: center; }
+    </style>
+</head>
+<body>
+    <h2 class='title'>{$title}</h2>
+    <table class='Nav' border="1">
+        <tr>
+            <td style='width:10%;'>id</td>
+            <td style='width:10%;'>医生id</td>
+            <td style='width:10%;'>银行卡号</td>
+            <td style='width:10%;'>银行卡所属银行</td>
+            <td style='width:10%;'>提现金额</td>
+            <td style='width:10%;'>提现后账户余额</td>
+            <td style='width:10%;'>状态</td>
+            <td style='width:10%;'>提现发起时间</td>
+            <td style='width:20%;'>操作</td>
+        </tr>
+        {volist name="data" id="data"}
+        <tr>
+            <td>{$data.id}</td>
+            <td>{$data.doctor_id}</td>
+            <td>{$data.bank_card}</td>
+            <td>{$data.back_name}</td>
+            <td>{$data.money}</td>
+            <td>{$data.money_2}</td>
+            <td>{$data.state}</td>
+            <td>{$data.time}</td>
+            <td>
+                <button>同意</button>
+                <button>拒绝</button>
+            </td>
+        </tr>
+        {/volist}
+    </table>
+</body>
+<script></script>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大图互动——图片上传</title>
+    
+</head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center animated fadeInDown">
+        <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+            <!-- 微信信息 -->
+            <img src="{$imageTX}" alt="微信头像">
+            <h3>{$name}</h3>
+            <span>{$openid}</span>
+            <!-- 图片上传 -->
+            <div class="form-group">
+                <label class="col-sm-3 control-label">缩略图：</label>
+                <input name="img_url" id="img_url" type="hidden" />
+                <div class="form-inline" id="container">
+                    <div class="input-group col-sm-2">
+                        <img id="imgshow" name="img_url" style="width: 100px;height:100px; margin-right:5px;" />
+                        <button type="button" class="layui-btn" id="pickfile">
+                            上传图片
+                        </button>
+                    </div>
+                    <div class="input-group col-sm-3">
+                        <div id="sm"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-8">
+                    <button class="btn btn-primary" type="submit">确认提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        // 系统全局变量
+        var appConfig = {
+            'publicPath': '{$Think.PUBLIC_PATH}',
+            'adminPath': '{$Think.ADMIN_PATH}',
+            'qiniuDomain': '{$Think.config.qiniu.bucketDomain}',
+        };
+    </script>
+    <script src="{$Think.PUBLIC_PATH}/static/component/requirejs/require.min.js"></script>
+    <script>
+        var componentPath = appConfig.publicPath + "/static/component/";
+        require.config({
+            baseUrl: "{$Think.PUBLIC_PATH}/static/js/{$Think.config.app_debug ? 'dev' : 'dist'}",
+            paths: {
+                "jquery": componentPath + "jquery/dist/jquery.min",
+                //        "jquery-ui-sortable":       appConfig.publicPath + "/static/js/lib/jquery-ui-sortable.min", // todo: check it
+                "bootstrap": componentPath + "bootstrap3/dist/js/bootstrap.min",
+                "bootstrap-dialog": componentPath + "bootstrap3-dialog/dist/js/bootstrap-dialog.min",
+                "bootstrap-notify": componentPath + "bootstrap-notify/dist/bootstrap-notify.min",
+                "jquery-validate": componentPath + "jquery-validation/dist/jquery.validate.min",
+                'additional-methods': componentPath + "jquery-validation/dist/additional-methods.min",
+                'messages_zh': componentPath + "jquery-validation/dist/localization/messages_zh.min",
+                //        'moment':                      componentPath + "bootstrap-daterangepicker-master/moment.min",
+                //        'daterangepicker':          componentPath + "bootstrap-daterangepicker-master/daterangepicker.min",
+                'wangEditor': componentPath + "wangEditor/dist/js/wangEditor.min",
+                'plupload': componentPath + "plupload/js/plupload.full.min",
+                'qiniu': componentPath + "qiniu-js/dist/qiniu.min",
+                "qiniuUploader": './component/qiniuUploader',
+                "qiniuUploader1": './component/qiniuUploader1',
+                "editor": './component/editor',
+                "jedate": componentPath + "jedate/jquery.jedate.min",
+                //            "pager":                    "./framework/pager",
+                //            "loader":                   "./framework/loader",
+                "framework": appConfig.publicPath + "/static/js/dist/framework"
+            },
+            shim: {
+                "bootstrap": {
+                    "deps": ['jquery']
+                },
+                "bootstrap-notify": {
+                    "deps": ['jquery', 'bootstrap']
+                },
+                "bootstrap-dialog": {
+                    "deps": ["jquery", "bootstrap"],
+                    "exports": "BootstrapDialog"
+                },
+                //            "jquery-validate" : {
+                //                "deps": ['additional-methods', 'messages_zh']
+                //            },
+                'plupload': {
+                    "deps": ['jquery']
+                },
+                'jedate': {
+                    "deps": ['jquery']
+                },
+                'qiniu': {
+                    "deps": ['jquery', 'plupload']
+                },
+                'wangEditor': {
+                    "deps": ['jquery', 'bootstrap', 'plupload', 'qiniu']
+                },
+                'qiniuUploader': {
+                    "deps": ['jquery', 'plupload', 'qiniu']
+                },
+                'editor': {
+                    "deps": ['jquery', 'bootstrap', 'plupload', 'qiniu', 'wangEditor']
+                },
+                'pager': {
+                    "deps": ['jquery', 'bootstrap', 'bootstrap-dialog', 'bootstrap-notify']
+                },
+                'loader': {
+                    "deps": ['jquery', 'bootstrap', 'bootstrap-dialog', 'bootstrap-notify']
+                },
+                'framework': {
+                    "deps": ['jquery', 'bootstrap', 'bootstrap-dialog', 'bootstrap-notify']
+                },
+                'nav': {
+                    "deps": ['jquery', 'bootstrap', 'bootstrap-dialog', 'bootstrap-notify']
+                },
+                'app': {
+                    "deps": [
+                        'jquery',
+                        'bootstrap',
+                        'bootstrap-dialog',
+                        'bootstrap-notify',
+                        'jquery-validate',
+                        //                    'additional-methods',
+                        //                    'messages_zh',
+                        'nav',
+                        //                    'pager',
+                        //                    'loader',
+                        'framework',
+                    ]
+                }
+            }
+        });
+    </script>
+
+    <script>
+
+        require(['app', 'editor', 'qiniuUploader', 'news/create'], function (app, editor, qiniuUploader, create) {
+            qiniuUploader($("#imgshow"), $("#img_url"), false);
+            create();
+        });
+
+    </script>
+</body>
+
+</html>

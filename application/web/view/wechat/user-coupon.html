@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>优惠券</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+</head>
+<body style="background: #f5f5f5">
+<!--扫描优惠券-->
+<div id="app" style="display: none">
+    <div class="card-box" v-for="item in list" v-if="item.type=='扫描'">
+        <span class="absort-l"></span>
+        <div class="card-list card-green">
+            <div class="w40">
+                <h2 class="card-validity">1次</h2>
+                <p>免费咨询</p>
+            </div>
+            <div class="w60">
+                <p><span class="coupon_type">咨询服务抵扣券</span></p>
+                <p>本券适用于<span>{{item.real_name}}</span>医师</p>
+            </div>
+            <!--<div class="card-footer">-->
+            <!--<p>使用时间:2016-10-1至2016-11-1</p>-->
+            <!--</div>-->
+        </div>
+        <span class="absort-r"></span>
+    </div>
+    <!--分享优惠券-->
+    <div class="card-box cash_coupon" v-for="item in list" v-if="item.type=='分享'">
+        <span class="absort-l"></span>
+        <div class="card-list">
+            <div class="w40">
+                <h2 class="card-validity">1次</h2>
+                <p>免费咨询</p>
+            </div>
+            <div class="w60">
+                <p><span class="coupon_type">咨询服务抵扣券</span></p>
+                <p>本券适用于<span>{{item.real_name}}</span>医师</p>
+            </div>
+            <!--<div class="card-footer">-->
+            <!--<p>使用时间:2016-10-1至2016-11-1</p>-->
+            <!--</div>-->
+        </div>
+        <span class="absort-r"></span>
+    </div>
+</div>
+
+<!--过期优惠券-->
+<div class="card-box overdue_coupon" style="display: none">
+    <span class="absort-l"></span>
+    <div class="card-list ">
+        <div class="w40">
+            <h2 class="card-validity">1次</h2>
+            <p>免费咨询</p>
+        </div>
+        <div class="w60">
+            <p><span class="coupon_type">咨询服务抵扣券</span></p>
+            <p>本券适用于<span>罗小鹏</span>医师</p>
+        </div>
+        <div class="card-footer">
+            <p>使用时间:2016-10-1至2016-11-1</p>
+        </div>
+    </div>
+    <span class="absort-r"></span>
+    <span class="overdue_i"><i></i></span>
+</div>
+
+<!--<div class="card-list frequency_coupon">-->
+<!--<div class="w40">-->
+<!--<h2 class="card-validity">1次</h2>-->
+<!--<p>免费咨询</p>-->
+<!--</div>-->
+<!--<div class="w60">-->
+<!--<p><span class="coupon_type">咨询服务抵扣券</span></p>-->
+<!--<p>本券适用于<span>罗小鹏</span>医师</p>-->
+<!--</div>-->
+<!--<div class="c80">-->
+<!--<p>使用时间:2016-10-1至2016-11-1</p>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="card-list cash_coupon">-->
+<!--<div class="w40">-->
+<!--<h2 class="card-validity">40￥</h2>-->
+<!--<p>抵用券</p>-->
+<!--</div>-->
+<!--<div class="w60">-->
+<!--<p><span class="coupon_type">现金抵用券</span></p>-->
+<!--<p>本券使用于<span>平台任何</span>医师</p>-->
+<!--</div>-->
+<!--<div class="c80">-->
+<!--<p>使用时间:2016-10-1至2016-11-1</p>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="card-list overdue_coupon">-->
+<!--<div class="w40">-->
+<!--<h2 class="card-validity">1次</h2>-->
+<!--<p>免费咨询</p>-->
+<!--</div>-->
+<!--<div class="w60">-->
+<!--<p><span class="coupon_type">咨询服务抵扣券</span></p>-->
+<!--<p>本券适用于<span>罗小鹏</span>医师</p>-->
+<!--</div>-->
+<!--<div class="c80">-->
+<!--<p>使用时间:2016-10-1至2016-11-1</p>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/userCoupon.js"></script>
+</body>
+</html>

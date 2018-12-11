@@ -1,0 +1,95 @@
+select {
+  /*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+  border: solid 1px #000;
+  /*很关键：将默认的select选择框样式清除*/
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  /*在选择框的最右侧中间显示小箭头图片*/
+  /*为下拉小箭头留出一点位置，避免被文字覆盖*/
+  padding-right: 14px;
+  border-radius: 0.25rem;
+}
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand {
+  display: none;
+}
+body {
+  color: #353535;
+  font-size: 15px;
+  font-weight: normal;
+}
+a {
+  text-decoration: none;
+  outline: none;
+  color: #353535;
+}
+/* 
+页面样式
+*/
+.tx1 {
+  float: left;
+  width: 2.2rem;
+}
+.tx2 {
+  float: right;
+  width: 2.2rem;
+}
+.DBox {
+  font-size: 0.7rem;
+  position: relative;
+  padding: 0.5rem;
+  width: 19rem;
+  color: #353535;
+}
+.DBox p {
+  border-radius: 0.25rem;
+  max-width: 11rem;
+  padding: 0.65rem 0.4rem;
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.DBox .p1 {
+  float: left;
+  background: #fff;
+  margin-left: 0.6rem;
+  border: 1px solid #d6d6d6;
+}
+.DBox .p2 {
+  float: right;
+  background: #a0e759;
+  margin-right: 0.6rem;
+  border: 1px solid #8cd150;
+}
+.DBox .p1-img {
+  position: absolute;
+  top: 1.35rem;
+  left: 3rem;
+  width: 0.4rem;
+}
+.DBox .p2-img {
+  position: absolute;
+  top: 1.25rem;
+  right: 2.95rem;
+  width: 0.4rem;
+}
+.form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 20rem;
+  height: 2.5rem;
+  background: #f4f4f4;
+  border-top: 1px solid #d8d8d8;
+  border-bottom: 1px solid #d8d8d8;
+}
+.form button {
+  display: block;
+  margin: 0.25rem auto;
+  width: 18rem;
+  height: 2rem;
+  font-size: 0.8rem;
+  color: #fff;
+  border-radius: 0.25rem;
+  background: #04be02;
+}

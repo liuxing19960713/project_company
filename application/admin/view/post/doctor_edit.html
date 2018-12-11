@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑案例</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑帖子</h5>
+                </div>
+                <div class="ibox-content">
+                    <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{$show.post_id}"/>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">医生ID：</label>
+                            <label class="col-sm-8 control-label" style="text-align:left; padding-left:0; padding-top:9px;">{$show.user_id}</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">用户名：</label>
+                            <label class="col-sm-8 control-label" style="text-align:left; padding-left:0;">{$show.doctorInfo.nick_name}</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">文章标题：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="title" type="text" class="form-control" name="title" required aria-required="true" value="{$show.title}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">点击率：</label>
+                            <div class="input-group col-sm-1">
+                                <input id="views_count" type="text" class="form-control" name="views_count" required aria-required="true" value="{$show.views_count}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">帖子类型：</label>
+                            <div class="input-group col-sm-7" style="padding-top:6px;">
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="post_type" value="normal" > <span class="spans">普通帖</span></label>
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="post_type" value="exp" > <span class="spans">经验贴</span></label>
+                                <label><input type="radio" class="rdo" name="post_type" value="help" > <span class="spans">求助帖</span></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">圈子类型：</label>
+                            <div class="input-group col-sm-7" style="padding-top:6px;">
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="group_type" value="1" > <span class="spans">经验交流</span></label>
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="group_type" value="2" > <span class="spans">备孕难题</span></label>
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="group_type" value="3" > <span class="spans">孕期专区</span></label>
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="group_type" value="4" > <span class="spans">试管顾问</span></label>
+                                <label><input type="radio" class="rdo" name="group_type" value="5" > <span class="spans">其他</span></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否置顶：</label>
+                            <div class="input-group col-sm-7" style="padding-top:6px;">
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="is_top" value="1" > <span class="spans">是</span></label>
+                                <label><input type="radio" class="rdo" name="is_top" value="0" > <span class="spans">否</span></label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否精华：</label>
+                            <div class="input-group col-sm-7" style="padding-top:6px;">
+                                <label style="margin-right:15px;"><input type="radio" class="rdo" name="is_best" value="1" > <span class="spans">是</span></label>
+                                <label><input type="radio" class="rdo" name="is_best" value="0" checked="checked"> <span class="spans">否</span></label>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">文章内容：</label>
+                            <div class="input-group col-sm-7" id="editor-container">
+                                <textarea name="content"  id="content" style="height:500px;">{$show.content}</textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" type="submit">确认提交</button>
+                        		<a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{block name="baseJS"}{include file="base/js" /}{/block}
+<script>
+    require(['app','editor', 'post/edit_doctor'],function (app, editor, create){
+        editor('content');
+        create();
+        $("input[name='post_type'][value='{$show.post_type}']").attr("checked",true);
+        $("input[name='group_type'][value='{$show.group_type}']").attr("checked",true);
+        $("input[name='is_top'][value='{$show.is_top}']").attr("checked",true);
+        $("input[name='is_best'][value='{$show.is_best}']").attr("checked",true);
+    });
+</script>
+</body>
+</html>

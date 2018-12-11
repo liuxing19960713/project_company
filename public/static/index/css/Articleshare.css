@@ -1,0 +1,220 @@
+.ArticleBox {
+  width: 20rem;
+}
+.ArticleBox .DictorBox {
+  width: 18.6rem;
+  padding: 0.75rem 0.7rem 0;
+}
+.ArticleBox .DictorBox span,
+.ArticleBox .DictorBox p {
+  margin: 0;
+  padding: 0;
+}
+.ArticleBox .DictorBox .TX {
+  float: left;
+  width: 2rem;
+  height: 2rem;
+  border: 0.02rem solid #e8e8e8;
+  border-radius: 2rem;
+  margin: 0 0.42rem 0 0;
+}
+.ArticleBox .DictorBox .Box2 {
+  float: left;
+  width: 12rem;
+}
+.ArticleBox .DictorBox .Box2 span {
+  float: left;
+}
+.ArticleBox .DictorBox .Box2 .name {
+  line-height: 1.22rem;
+  font-weight: bold;
+  font-size: 0.73rem;
+}
+.ArticleBox .DictorBox .Box2 .hospital {
+  line-height: 1.22rem;
+  color: #999999;
+  font-size: 0.65rem;
+  padding: 0 0.533rem;
+}
+.ArticleBox .DictorBox .Box2 .department {
+  font-weight: bold;
+  font-size: 0.53rem;
+}
+.ArticleBox .DictorBox .bt {
+  float: right;
+  position: relative;
+  top: -0.6rem;
+  width: 3.2rem;
+  line-height: 1.3rem;
+  text-align: center;
+  font-size: 0.67rem;
+  color: #fff;
+  background: #999;
+  border-radius: 0.25rem;
+}
+.ArticleBox .SpBox,
+.ArticleBox .SpBox2 {
+  display: block;
+}
+.ArticleBox .SpBox .sp1,
+.ArticleBox .SpBox2 .sp1 {
+  color: #999999;
+  font-size: 0.58rem;
+}
+.ArticleBox .SpBox {
+  margin: 0.8rem 0rem;
+}
+.ArticleBox .SpBox2 {
+  margin: 0.6rem 0rem;
+}
+.ArticleBox .h3 {
+  margin: 0.9375rem 0.7rem 0;
+  display: block;
+  max-width: 18rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+.ArticleBox h1,
+.ArticleBox h2,
+.ArticleBox h3,
+.ArticleBox p,
+.ArticleBox span {
+  margin: 0.186rem 0.7rem;
+}
+.ArticleBox p {
+  font-size: 0.7rem;
+}
+.ArticleBox p img {
+  width: 100%;
+}
+.ArticleBox .Dz_Box {
+  width: 13.17rem;
+  margin: 0 auto;
+}
+.ArticleBox .Dz_Box a,
+.ArticleBox .Dz_Box button {
+  width: 5.87rem;
+  height: 1.87rem;
+  margin-top: 1.8rem;
+  margin-bottom: 1.8rem;
+  font-size: 0.8rem;
+  text-align: center;
+  border-radius: 1rem;
+  line-height: 1.87rem;
+}
+.ArticleBox .Dz_Box .Dz1 {
+  float: left;
+  color: #999999;
+  border: 0.04rem solid #999999;
+}
+.ArticleBox .Dz_Box .Dz2 {
+  float: right;
+  color: #999999;
+  border: 0.04rem solid #999999;
+}
+.ArticleBox .Title2Box {
+  width: 20rem;
+  height: 1.5rem;
+  text-align: center;
+  position: relative;
+}
+.ArticleBox .Title2Box .Bag {
+  position: absolute;
+  top: 0;
+  left: 0.7rem;
+  width: 18.6rem;
+  height: 50%;
+  margin: 0;
+  padding: 0;
+  border-bottom: 0.02rem solid #b0b0b0;
+}
+.ArticleBox .Title2Box .text {
+  text-align: center;
+  font-size: 0.74rem;
+  position: absolute;
+  top: 0.2rem;
+  left: 7.8rem;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  width: 4rem;
+}
+.ArticleBox .Title2Box .text2 {
+  text-align: center;
+  font-size: 0.74rem;
+  position: absolute;
+  top: 0.2rem;
+  left: 5.2rem;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  width: 10rem;
+}
+.ArticleBox .BookBox {
+  width: 18.6rem;
+  margin: 0 0.7rem;
+  padding: 0.533rem 0rem;
+  font-size: 0.64rem;
+  border-bottom: 0.02rem solid #e8e8e8;
+}
+.ArticleBox .BookBox .TX,
+.ArticleBox .BookBox .user_name,
+.ArticleBox .BookBox .Book_comment,
+.ArticleBox .BookBox .Book_thumbs,
+.ArticleBox .BookBox .Book_time,
+.ArticleBox .BookBox span,
+.ArticleBox .BookBox p {
+  margin: 0;
+  padding: 0;
+}
+.ArticleBox .BookBox .TX {
+  float: left;
+  top: 0;
+  left: 0.7rem;
+  width: 2rem;
+  height: 2rem;
+  border: 0.02rem solid #e8e8e8;
+  border-radius: 2rem;
+  margin: 0 0.42rem;
+}
+.ArticleBox .BookBox .Box2 {
+  width: 16rem;
+  height: 1rem;
+  margin-left: 2.6rem;
+}
+.ArticleBox .BookBox .user_name {
+  float: left;
+}
+.ArticleBox .BookBox .Book_comment {
+  float: right;
+  margin: 0 0 0 0.6rem;
+}
+.ArticleBox .BookBox .Book_thumbs {
+  float: right;
+  margin: 0 0 0 0.6rem;
+}
+.ArticleBox .BookBox .Book_time {
+  display: block;
+  float: left;
+  width: 15.2rem;
+  color: #999999;
+  font-size: 0.6rem;
+}
+.ArticleBox .BookBox .Book_content {
+  width: 15.2rem;
+  line-height: 1rem;
+  margin-left: 2.6rem;
+}
+.ArticleBox .BookBox2 {
+  width: 14.8rem;
+  margin: 0.48rem 2.6rem;
+  padding: 0.26rem 0.533rem;
+  border: 0.02rem solid #e8e8e8;
+}
+.ArticleBox .BookBox2 span,
+.ArticleBox .BookBox2 button {
+  color: #fdb02e;
+}
+.ArticleBox .BookBox2 p {
+  line-height: 1rem;
+}

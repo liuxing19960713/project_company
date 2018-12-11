@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑文章</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>用户病历表</h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row-fluid">
+                      <table class="table table-bordered">
+                            <tr>
+                                <th class="text-right">姓名</th>
+                                <td>{$show.real_name}</td>
+                                <th class="text-right">年龄</th>
+                                <td>{$show.age}&nbsp;岁</td>
+                                <td rowspan="4" width="150px" height="150px">
+                                    {if condition="!empty($show['avatar'])"}
+                                    <a href="javascript:void(0)" class="js-thumb" data-thumb="{$show.avatar}"> <img src="{$show.avatar}" width="150px" height="150px" /></a>
+                                    {else/}
+                                    <a href="javascript:void(0)" class="js-thumb" data-thumb="http://ogu99wuzj.bkt.clouddn.com/o_1bfof6snt951c32j8i1sjnm67g.png"><img width="150px" height="150px"src="http://ogu99wuzj.bkt.clouddn.com/o_1bfof6snt951c32j8i1sjnm67g.png" /></a>
+                                    {/if}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">性别</th>
+                                <td>{if condition ="$show.gender eq 'male'"}男{else /}女{/if}</td>
+                                <th class="text-right">职业</th>
+                                <td>{$show.career}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">手机号 </th>
+                                <td>XXXXXXXXXX</td>
+                                <th class="text-right">血型 </th>
+                                <td>{$show.blood_type} &nbsp;型</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">婚姻状况 </th>
+                                <td>{$show.marriage}</td>
+                                <th class="text-right">病历创建时间</th>
+                                {if condition="empty($show['create_time'])"}
+                                <td >暂无</td>
+                                {else}
+                                <td >{$show.create_time|date='Y-m-d H:i:s',###}</td>
+                                {/if}
+                            </tr>
+    
+                            <tr>
+                                <th colspan="5" class="text-center" style="font-size:20px;">用户个人检查详细信息</th>
+                            </tr>
+                            <tr>
+                                <th class="text-right">身高</th>
+                                <td>{$show.body_height}</td>
+                                <th class="text-right">体重</th>
+                                <td colspan="2">{$show.body_weight}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">初潮年龄</th>
+                                <td>{$show.menarche_age}</td>
+                                <th class="text-right">闭经</th>
+                                <td colspan="2">{$show.amenia}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">有无子女</th>
+                                <td>{$show.has_child}</td>
+                                <th class="text-right">子女个数</th>
+                                <td colspan="2">{$show.child_num}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">闭经时间</th>
+                                <td>{$show.amenia_time}</td>
+                                <th class="text-right">上次月经</th>
+                                <td colspan="2">{$show.last_menses}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">月经紊乱</th>
+                                <td>{$show.menses_disorder }</td>
+                                <th class="text-right">月经天数</th>
+                                <td colspan="2">{$show.menses_days}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">月经量</th>
+                                <td>{$show.menses_quantity}</td>
+                                <th class="text-right">月经周期</th>
+                                <td colspan="2">{$show.menses_cycle}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">痛经  </th>
+                                <td>{$show.menalgia} </td>
+                                <th class="text-right">严重程度</th>
+                                <td colspan="2">{$show.severity}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">避孕方法 </th>
+                                <td> {$show.birth_control_method}</td>
+                                <th class="text-right">解除避孕</th>
+                                <td colspan="2">{$show.birth_control_release}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">避孕多长时间？</th>
+                                <td> {$show.birth_control_time}</td>
+                                <th class="text-right">怀孕次数 </th>
+                                <td colspan="2">{$show.pregnant_times}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">自然流产</th>
+                                <td>{$show.spontaneous_abortion}</td>
+                                <th class="text-right"> 人流 </th>
+                                <td colspan="2">{$show.induced_abortion}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">胚胎停育</th>
+                                <td>{$show.embryo_damage}</td>
+                                <th class="text-right">顺产/刨宫产 </th>
+                                <td colspan="2">{$show.eutocia}</td>
+                            </tr>
+    
+                            <tr>
+                                <th class="text-right">性交痛 </th>
+                                <td>{$show.sex_pain}</td>
+                                <th class="text-right">隐性下腹痛</th>
+                                <td colspan="2">{$show.latent_abdominal_pain}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">性生活</th>
+                                <td> {$show.sex_life}</td>
+                                <th class="text-right">大便痛</th>
+                                <td colspan="2">{$show.poo_pain}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">所患疾病</th>
+                                <td colspan="4" width="900px;"> {$show.disease} </td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">病情描述</th>
+                                <td colspan="4" width="900px;">{$show.disease_description} </td>
+                            </tr>
+                        </table>
+                        <div class="form-group" style="margin-top:20px;">
+                            <div class="col-sm-4 col-sm-offset-8">
+                        		<a class="btn btn-default" href="JavaScript:history.back(-1)" style="float:right;">返回</a>
+                            </div>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{block name="baseJS"}{include file="base/js" /}{/block}
+</body>
+</html>

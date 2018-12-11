@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>评价医生</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/jquery-labelauty.css" rel="stylesheet">
+
+</head>
+<body style="background: #f2f2f2">
+<form id="app" class="evaluate-doctor-form" style="display: none">
+    <ul class="doctor-group">
+        <a href="doctor-detail.html">
+            <li class="clearfix evaluate-doctor">
+                <div class="doctor-head">
+                    <img  :src="cdnServer+doctor.avatar" alt="doctor"/>
+                </div>
+                <div class="doctor-info">
+                    <p><strong>{{doctor.real_name}}</strong></p>
+                    <p>{{doctor.good_at}}</p>
+                </div>
+            </li>
+        </a>
+    </ul>
+    <section class="doctor-infoBox">
+        <h3 class="sub-title3">服务评分</h3>
+        <ul class="dowebok satisfaction_degree">
+            <li class="satisfaction_degree_li very_satisfied" id="very_satisfied_button" @click="updateSatisfy('很满意')">
+                <i></i>
+                <span>很满意</span>
+            </li>
+            <li class="satisfaction_degree_li satisfied" id="satisfied_button" @click="updateSatisfy('满意')">
+                <i></i>
+                <span>满意</span>
+            </li>
+            <li class="dissatisfied" id="dissatisfied_button" @click="updateSatisfy('不满意')">
+                <i></i>
+                <span>不满意</span>
+            </li>
+            <!--<li class="satisfaction_degree_li"><input type="radio" name="radio" data-labelauty="很满意"></li>
+            <li class="satisfaction_degree_li"><input type="radio" name="radio" data-labelauty="满意"></li>
+            <li><input type="radio" name="radio" data-labelauty="不满意"></li>-->
+        </ul>
+        <ul class="dowebok service_attitude service_very_stasfied">
+            <li><input type="checkbox" name="checkbox" data-labelauty="非常专业认真"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="态度非常好"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="非常敬业"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="非常清楚"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="意见很有帮助"></li>
+        </ul>
+        <ul class="dowebok service_attitude service_stasfied">
+            <li><input type="checkbox" name="checkbox" data-labelauty="希望更加细致"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="希望回复更快"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="希望讲的更透测"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="希望更热情"></li>
+        </ul>
+        <ul class="dowebok service_attitude service_dissatisfied ">
+            <li><input type="checkbox" name="checkbox" data-labelauty="感觉不专业"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="不细致"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="完全听不懂"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="没有帮助"></li>
+            <li><input type="checkbox" name="checkbox" data-labelauty="等了很久没有回复"></li>
+        </ul>
+
+    </section>
+    <section class="doctor-infoBox">
+        <h3 class="sub-title3">医生擅长</h3>
+        <ul id="good_at" class="dowebok doctor_good">
+            <li v-for="item in docGoodAts"><input type="checkbox" name="good_at" :data-labelauty="item"></li>
+        </ul>
+    </section>
+    <section class="doctor-infoBox  doctor-infoBox_evaluate">
+        <h3 class="sub-title">给医生一些评价</h3>
+        <textarea class="give-doctor-evaluate" v-model="evaluation" placeholder="请写下您的意见和建议"></textarea>
+    </section>
+    <section class="give-doctor-button">
+        <input class="submit-btn" type="button" @click="commit" value="提交">
+    </section>
+</form>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-labelauty.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/evaluate.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/userEvaluation.js"></script>
+
+</body>
+</html>

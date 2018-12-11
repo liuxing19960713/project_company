@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 文章分享页 -->
+    <title>{$Title}</title>
+    <link href="__CSS__/CssReset.css" rel="stylesheet">
+    <link href="__CSS2__/common.css" rel="stylesheet">
+    <link href="__CSS2__/Healthrecord.css" rel="stylesheet">
+    <link href="__COMPONENT__/font-awesome/css/font-awesome.min.css?v=4.7.0" rel="stylesheet">
+    <link href="__COMPONENT__/Fm/Fm.css" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        {include file="./common/AppHeader" /}
+        
+    </div>
+</body>
+<script src="__JS__/jquery.min.js"></script>
+<script src="__COMPONENT__/vue/vue.min.js"></script><script src="__COMPONENT__/vue/vue.min.js"></script>
+<script src="__COMPONENT__/Fm/Fm.js"></script>
+<script>
+    //Fm插件
+    var FmPopups = new Popups;
+    var FmTool = new Tool;
+    //设置Rem
+    FmTool.Rem();
+    //判断设备
+    if(FmTool.CheckIsAppleDevice()) {
+        //alert("iOS设备");
+    } else if(FmTool.CheckIsAndroidDevice()) {
+        //alert("安卓设备");    
+    }
+    //初始化Vue
+    var app = new Vue({
+        el: '#app',
+        //数据源
+        data:{
+            //导航栏名称
+            title: '{$Title}'
+        },
+        //自定义方法,触发的方法
+        methods:{
+            
+        },
+        //渲染前执行的内容(执行与数据相关的操作)
+        computed:{
+            
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,2 @@
+!function(){$("#btn_logout").click(function(){$.loader(!0),$.ajax({url:appConfig.adminPath+"Site/logout",success:function(o){$.loader(!1),o.success?BootstrapDialog.show({title:"提示",message:"退出登录",buttons:[{label:"关闭",action:function(o){$.loader(!0),location.href=appConfig.adminPath+"Site/login"}}],onhide:function(o){$.loader(!0),location.href=appConfig.adminPath+"Site/login"}}):BootstrapDialog.show({message:o.errmsg,buttons:[{label:"关闭",action:function(o){o.close()}}]})}})})}();
+//# sourceMappingURL=nav.js.map

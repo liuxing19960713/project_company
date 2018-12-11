@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑案例</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>编辑帖子</h5>
+                </div>
+                <div class="ibox-content">
+                    <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+                        <input type="hidden" name="id" value="{$show.post_id}"/>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">帖子标题：</label>
+                            <label class="col-sm-8 control-label" style="text-align:left; padding-left:0;">{$show.title}</label>
+                        </div>
+                        
+                        
+                        
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">用户ID：</label>
+                            <label class="col-sm-8 control-label" style="text-align:left; padding-left:0;">{$show.userInfo.nick_name}</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">文章标题：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="title" type="text" class="form-control" name="title" required aria-required="true" value="{$show.title}">
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" type="submit">确认提交</button>
+                        		<a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{block name="baseJS"}{include file="base/js" /}{/block}
+<script>
+    require(['app','editor', 'post/edit'],function (app, editor, create){
+        editor('content');
+        create();
+        $("input[name='post_type'][value='{$show.post_type}']").attr("checked",true);
+        $("input[name='group_type'][value='{$show.group_type}']").attr("checked",true);
+        $("input[name='is_top'][value='{$show.is_top}']").attr("checked",true);
+        $("input[name='is_best'][value='{$show.is_best}']").attr("checked",true);
+    });
+</script>
+</body>
+</html>

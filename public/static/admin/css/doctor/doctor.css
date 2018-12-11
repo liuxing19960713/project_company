@@ -1,0 +1,232 @@
+.title {
+    float: left;
+    margin-left: 1%;
+}
+#DoctorTab {
+    width: 98%;
+    color: rgb(94, 94, 94);
+    margin: 20px auto;
+    max-width: 100%;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: transparent;
+}
+#DoctorTab tr:nth-child(odd) {
+    /* tr隔行换色 */
+    background:rgb(250, 250, 250);
+}
+#DoctorTab th {
+    line-height: 60px;
+    text-align: center;
+    font-weight: bolder;
+}
+#DoctorTab td {
+    line-height: 60px;
+}
+.DoctorTx {
+    height: 60px;
+}
+/* 分页按钮 */
+.pagination {
+    margin: 0 1% 0 0!important;
+    float: right!important;
+}
+#filter {
+    float: left;
+    padding: 7px 10px;
+    margin: 10px 1%;
+    border-radius: 5px;
+    background: #fff;
+    font-weight: bolder;
+    color: #18a689;
+    border: 1px solid #cccccc;
+}
+#filter option {
+    /* padding: 7px 10px;
+    color: #18a689; */
+}
+#DoctorAddBt {
+    float: left;
+    padding: 5px 10px;
+    margin: 10px 10px;
+    border-radius: 5px;
+    background: #18a689;
+    font-weight: bolder;
+    color: #fff;
+    border: 2px solid #18a689;
+}
+#DoctorAddBt:hover {
+    background: #fff;
+    font-weight: bolder;
+    color: #18a689;
+    border: 2px solid #18a689;
+}
+#SearchForm {
+    float: right;
+    width: 634px; height: 34px;
+    margin: 10px 1%;
+}
+#SearchForm input {
+    float: left;
+    height: 100%;
+    border-radius: 5px;
+}
+#SearchForm input[type=text] {
+    width: 24.666%;
+    padding: 0 1%;
+    margin: 0 1%;
+    border: 1px solid #cccccc;
+}
+#SearchForm input[type=text]:focus {
+    border: 1px solid #18a689;
+}
+#SearchForm input[type=submit] {
+    font-weight: bolder;
+    width: 18%;
+    padding: 0 1%;
+    margin: 0 1%;
+    color: #fff;
+    background: #18a689;
+    border: 2px solid #18a689;
+}
+#SearchForm input[type=submit]:hover {
+    color: #18a689;
+    background: #ffffff;
+    border: 1px solid #18a689;
+}
+/* doctor_add */
+.Add-box {
+    width: 60%;
+    padding: 20px 5%;
+    margin: 50px auto;
+    background-color: #fff;
+}
+.Add-box input[type=text],.Add-box input[type=password] {
+    width: 100%;
+    padding: 10px 5%;
+    margin: 5px 0;
+    border: 1px solid #cccccc;
+}
+.Add-box input[type=text]:focus,.Add-box input[type=password]:focus {
+    border: 1px solid #18a689;
+}
+.Add-box input[type=submit] {
+    float: right;
+    font-weight: bolder;
+    padding: 10px 20px;
+    margin: 10px 0 0 25px;
+    color: #fff;
+    background: #18a689;
+    border: 2px solid #18a689;
+}
+.Add-box input[type=submit]:hover {
+    color: #18a689;
+    background: #ffffff;
+    border: 2px solid #18a689;
+}
+/* doctor_alter */
+.DoctorData {
+    width: 95%;
+    min-width: 1000px;
+    padding: 10px 2.5%;
+    margin: 20px auto;
+    background-color: #fff; 
+}
+.DoctorData .h3 {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    font-weight: bolder;
+    border-bottom: 1px solid #18a689;
+}
+.DoctorData .h4 {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin: 0;
+    color: #fff;
+    font-weight: bolder;
+    background-color: #18a689; 
+}
+.DoctorData .h5 {
+    float: left;
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bolder;
+    margin: 0;
+}
+.DoctorData .Box {
+    /* display: inline-block; */
+    float: left;
+    border: 1px solid #cacaca;
+    color: #3f3f3f;
+}
+.DoctorData .Box .Box2 {
+    float: left;
+    padding: 5px;
+}
+.DoctorData .Box input,.DoctorData .Box select,.DoctorData .Box textarea {
+    border: 1px solid #cacaca;
+    padding: 5px;
+    border-radius: 5px;
+}
+.DoctorData .Box textarea {
+    height: 120px;
+}
+.DoctorData .Box button{
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+.DoctorData .Portrait {
+    width: 18%;
+}
+.DoctorData .Portrait .Portrait_img {
+    width: 80%;
+    margin: 10px 10%;
+}
+#UpImg-Portrait_img .bt1 {
+    text-align: center;
+    display: block;
+    width: 80%;
+    border-radius: 5px;
+    padding: 5px 5%;
+    margin: 5px auto;
+    color: #fff;
+    background: #18a689;
+}   
+#UpImg-Portrait_img .bt1:hover {
+    opacity: 0.9;
+}   
+#UpImg-Portrait_img #file {
+    display: none;
+}
+.DoctorData .Inf,.DoctorData .Office,.DoctorData .ConFee {
+    width: 81.5%;
+}
+.But-Box {
+    width: 400px;
+    margin: 20px auto;
+}
+.But-Box button{
+    border: 2px solid #18a689;
+    background-color: #18a689;
+    color: #fff;
+    width: 120px;
+    margin: 15px 0;
+    padding: 15px 20px;
+}
+.But-Box button:hover{
+    border: 2px solid #18a689;
+    background-color: #fff;
+    color: #18a689;
+}
+.But-Box .Bt1{
+    float: left;
+}
+.But-Box .Bt2{
+    float: right;
+}

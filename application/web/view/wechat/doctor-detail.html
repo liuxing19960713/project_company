@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>咨询医生</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/pop-up_layer.css" rel="stylesheet">
+</head>
+<body>
+
+<section id="app" class="doctor-detail" style="display: none">
+    <input id="did" type="hidden" value="{$did}">
+    <input id="from" type="hidden" value="{$from}">
+
+    <section class="doctor-infoBox">
+        <div class="doctor-head">
+            <img :src="cdnServer+item.avatar" alt="doctor"/>
+        </div>
+        <div class="doctor-info">
+            <p>
+                <strong>{{item.real_name}}</strong>
+            </p>
+            <p>{{item.department2}}&nbsp;{{item.title}}</p>
+            <p class="doctor-hospital_detail">{{item.hospital}}</p>
+            <button id="bt_unfollow" class="attention-btn" type="button" style="display: none" @click="follow">关注
+            </button>
+            <button id="bt_followed" class="attention-btn" type="button" style="display: none">已关注</button>
+        </div>
+        <ul class="three-li clearfix">
+            <li class="left_border">
+                <p class="line-3rem">粉丝数</p>
+                <p><strong>{{item.follower_count}}</strong></p>
+            </li>
+            <li class="left_border">
+                <p class="line-3rem">服务人数</p>
+                <p><strong>{{item.service_times}}</strong></p>
+            </li>
+            <li>
+                <p class="line-3rem">收到心意</p>
+                <p><strong>{{item.gift_times}}</strong></p>
+            </li>
+        </ul>
+    </section>
+    <section class="doctor-infoBox">
+        <span class="refer-icon"><i></i></span>
+        <div class="refer-info">
+            <h3 class="little-title">
+                图文咨询
+                <span class="fr"><strong>¥{{item.image_price}}/次</strong></span>
+            </h3>
+            <p>
+                通过文字，图片进行咨询
+                <span class="fr fr_number">{{item.image_service_times}}人已购买</span>
+            </p>
+        </div>
+    </section>
+    <section class="doctor-infoBox doctor-infoBox_detail">
+        <h3 class="sub-title">推荐热度</h3>
+        <ul class="hotword-list hotword-list_groon">
+            <li v-for="i in item.statistic_good_at">{{i}}</li>
+        </ul>
+        <h3 class="sub-title sub-title_patient">患者印象</h3>
+        <ul class="hotword-list hotword-list_patient">
+            <li v-for="i in item.statistic_impression">{{i}}</li>
+        </ul>
+    </section>
+    <section class="doctor-infoBox subtitle">
+        <h3>擅长及诊所介绍</h3>
+        <p class="tworow">
+            {{item.intro1}}
+        </p>
+    </section>
+    <section class="doctor-infoBox subtitle">
+        <h3>医学教育背景介绍</h3>
+        <p class="tworow">{{item.intro2}}</p>
+    </section>
+    <section class="doctor-infoBox subtitle">
+        <h3>学术研究成功&nbsp;获奖介绍</h3>
+        <p class="tworow">{{item.intro3}}</p>
+    </section>
+
+    <section class="doctor-infoBox subtitle fixbottom">
+        <h3>用户评价</h3>
+        <div v-for="i in item.comments">
+            <p id="subTitle">{{i.oauth_type}}<span class="evaluate">{{i.grade}}</span></p>
+            <p class="fourrow">{{i.evaluation}}</p>
+        </div>
+
+    </section>
+    <section style="height:6rem;background: #fff"></section>
+    <footer class="footer-btn">
+        <ul class="half-li clearfix">
+            <li class="active">
+                <button id="btn_free" class="consulting_button" @click="freeConsultation">免费咨询</button>
+            </li>
+            <li>
+                <button class="pay_buttom" @click="pay">
+                    付费咨询(¥{{item.image_price}}/次)
+                </button>
+            </li>
+        </ul>
+    </footer>
+
+    <!--用户通过朋友圈链接进入或扫描二维码进入-->
+    <div class="pop-up_layer popUp1" data-popUp="btn1">
+        <div class="layer_main">
+            <p class="layer_content">关注公众号，并点击关注该医生就可，获得一张免费咨询的优惠券哦</p>
+            <div class="pop-up-footer">
+                <button class="btn_close" @click="closeUnFollowUI">好</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="pop-up_layer popUp" data-popUp="btn1">
+        <div class="layer_main" style="background: none;">
+            <h3 class="pop-title">恭喜你获得了</h3>
+            <div class="card-box">
+                <span class="absort-l"></span>
+                <div class="card-list">
+                    <div class="w40">
+                        <h2 class="card-validity">1次</h2>
+                        <p>免费咨询</p>
+                    </div>
+                    <div class="w60">
+                        <p><span class="coupon_type">咨询服务抵扣券</span></p>
+                        <p>本券适用于<span>{{item.real_name}}</span>医师</p>
+                    </div>
+                    <!--<div class="card-footer">-->
+                    <!--<p>使用时间:2016-10-1至2016-11-1</p>-->
+                    <!--</div>-->
+                </div>
+                <span class="absort-r"></span>
+            </div>
+            <p class="pop-content">您可以使用该券咨询医生哦～</p>
+            <div class="pop-up-footer">
+                <button class="btn_close pop-btn" @click="closeCouponUI">知道了</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/doc_detail.js"></script>
+</body>
+</html>

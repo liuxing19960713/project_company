@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管理员列表</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>管理员列表</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="form-group clearfix col-sm-1">
+                {if authCheck2('1') }
+                <a href="{:url('admin/adminAdd')}">
+                    <button class="btn btn-outline btn-primary" type="button">添加管理员</button>
+                </a>
+                {/if}
+            </div>
+            <!--搜索框开始-->
+            <form id='commentForm' role="form"  method="get" action="" class="form-inline pull-right">
+                <div class="content clearfix m-b">
+                    <div class="form-group">
+                        <label>管理员名称：</label>
+                        <input type="text" class="form-control" id="username" name="searchText">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" style="margin-top:5px" id="search"><strong>搜 索</strong>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!--搜索框结束-->
+
+            <div class="example-wrap">
+                <div class="example">
+                    <table class="table">
+                        <thead>
+                          <th>管理员ID</th>
+                          <th>管理员名称</th>
+                          <th>管理员角色</th>
+                          <th>真是姓名</th>
+                          <th>上次登录ip</th>
+                          <th>上次登录时间</th>
+                          <th>操作</th>
+                        </thead>
+                        
+                        {foreach name="list" item="vo"}
+                        <tr>
+                            <td>{$vo.admin_id}</td>
+                            <td>{$vo.account}</td>
+                            <td>{$vo.admin_rank}</td>
+                            <td>{$vo.nickname}</td>
+                            <td>{$vo.last_login_ip}</td>
+                            <td>{$vo.last_login_time}</td>
+                            <td>{$vo.operate}</td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                    <span style="margin-top:10px; float:left;">总共{$count}条记录</span>
+                    <div style="clear:both"></div>
+                    <div id="page" style="text-align: right">{$list->render();}</div>
+                    <input type="hidden" name="count" value="{$count}">
+                </div>
+            </div>
+            
+            <!-- End Example Pagination -->
+        </div>
+    </div>
+</div>
+<!-- End Panel Other -->
+</div>
+{block name="listJS"}{include file="base/jslist" /}{/block}
+<script type="text/javascript">
+    function adminDel(id){
+        layer.confirm('确认删除此管理员?', {icon: 3, title:'提示'}, function(index){
+            //do something
+            $.getJSON("{:url('admin/adminDel')}", {'id' : id}, function(res){
+                if(1 == res.code){
+                    layer.alert(res.msg, {title: '友情提示', icon: 1, closeBtn: 0}, function(){
+                        //initTable();
+						window.location.reload();
+                    });
+                }else if(111 == res.code){
+                    window.location.reload();
+                }else{
+                    layer.alert(res.msg, {title: '友情提示', icon: 2});
+                }
+            });
+
+            layer.close(index);
+        })
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{$title}</title>
+    <link href="__CSS2__/CssReset.css" rel="stylesheet">
+    <link href="__CSS2__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS2__/font-awesome.min.css?v=4.7.0" rel="stylesheet">
+    <link href="__COMPONENT__/Fm/Fm.css" rel="stylesheet">
+</head>
+<body>
+    <h1 style="text-align:center;">{$title}</h1>
+    <!-- <div id="FmDitor" style="margin:0 auto;"></div> -->
+    <textarea id="editor_1" name="content"></textarea>
+</body>
+<script src="__JS__/jquery.min.js"></script>
+<script src="__COMPONENT__/Fm/Fm.js"></script>
+<script src="__COMPONENT__/kindeditor/kindeditor-all.js"></script>
+<script src="__COMPONENT__/kindeditor/lang/zh-CN.js"></script>
+<script>
+    KindEditor.ready(function(K) {
+        window.editor = K.create('#editor_1');
+    });
+</script>
+</html>

@@ -1,0 +1,126 @@
+/* APP搜索关键词管理css */
+.bt2 {
+    border-radius: 4px;
+}
+.header {
+    padding: 20px 0;
+}
+#filter {
+    height: 32px;
+    margin-left: 1%;
+    border: 1px solid #e4eaec;
+}
+#commentForm {
+    margin-right: 1%;
+}
+#commentForm button {
+    padding: 0 10px;
+    height: 32px;
+}
+.T-Box {
+    width: 320px;
+    margin: 10px auto;
+}
+.T-Box .Title {
+    height: 40px;
+    line-height: 40px;
+    float: left;
+    font-size: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+#Add {
+    float: left;
+    height: 40px;
+    margin-left: 20px;
+    padding: 0 10px;
+}
+#ApptagsTab {
+    /* display: block; */
+    width: 98%;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+    border: 1px solid #e4eaec;
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: transparent;
+}
+#ApptagsTab tr:nth-child(odd) {
+    /* tr隔行换色 */
+    background:rgb(250, 250, 250);
+}
+#ApptagsTab td {
+    text-align: center;
+    padding: 5px 0;
+}
+#ApptagsTab .data input {
+    border-radius: 5px;
+    text-align: center; 
+}
+#ApptagsTab .data select {
+    width: 80%; 
+    border: 1px solid #e4eaec;
+}
+#ApptagsTab .data input:focus {
+    width: 80%;
+    color: #18a689;
+    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s; 
+    border-color:rgba(24,166,137,.75); 
+    -webkit-box-shadow:0 0 18px rgba(4,166,137,3); 
+}
+#floating {
+    background-color:rgba(255, 255, 255, 0.7);
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+#floating .FloatDom {
+    display: none;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    width: 30%;
+    padding: 5% 5%;
+    background-color: #fff; 
+    border: 1px solid #e4eaec;
+}
+#floating .AddBox {
+    margin: 5% auto 0;
+    height: 420px;
+}
+#floating .AddBox input,#floating .AddBox select {
+    width: 100%;
+    padding: 5px 5%;
+    margin: 10px 0;
+    border: 1px solid #e4eaec;
+}
+#floating .AddBox button {
+    width: 100%;
+    padding: 15px 5%;
+}
+#floating .DeleteBox button {
+    float: left;
+    width: 40%;
+    margin: 0 5%;
+    padding: 10px 5%;
+}
+#floating .delete {
+    color: rgb(230, 42, 42);
+    font-size: 25px;
+    position: absolute;
+    top: 4%; left: 88%;
+}
+#floating .delete:hover {
+    color: rgb(243, 90, 90);
+    cursor: pointer;
+}
+#floating .DeleteBox {
+    display: none;
+    margin: 20% auto 0;
+    height: 130px;
+    padding: 2.5% 5% 5%;
+}
+#floating .DeleteBox h3 {
+    text-align: center;
+}

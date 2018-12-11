@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>免费咨询</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/radioAcheckbox.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/jquery-labelauty.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/infertility.css" rel="stylesheet"/>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/pop-up_layer.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/mobiscroll_002.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/mobiscroll.css" rel="stylesheet" type="text/css">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/mobiscroll_003.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<h3 class="title-bg">请填写详细资料，方便医师了解您的病情哦</h3>
+<section class="from-edit" id="app">
+    <div class="onerow">
+        <label for="username">姓名</label>
+        <input class="inputl" id="username" v-model="name" name="username" type="text" placeholder="请填写您的真实姓名">
+    </div>
+    <div class="onerow onerow_button">
+        <label>性别</label>
+        <ul class="dowebok">
+            <li><input type="radio" name="sex" data-labelauty="男" id="birth_man"></li>
+            <li><input type="radio" name="sex" data-labelauty="女" id="birth_woman"></li>
+        </ul>
+    </div>
+    <div class="onerow case_onerow">
+        <label for="username">年龄</label>
+        <input class="inputl" id="user_age" v-model="age" name="user_age" type="text" placeholder="请填写您的真实年龄">
+        <span class="user_age_propt">请输入数字</span>
+    </div>
+    <div class="onerow">
+        <label>备孕时间</label>
+        <input class="inputl" id="prepare_pregnant" v-model="preparePregnantTime" name="prepare_pregnant" type="text"
+               placeholder="请填写备孕时间(年份)">
+        <span class="prepare_propt">请输入数字</span>
+    </div>
+    <!--性别选择男时-->
+    <div class="man">
+        <div class="onerow onerow_button">
+            <label>治疗及手术史</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="operation_man" data-labelauty="有"></li>
+                <li><input type="radio" name="operation_man" data-labelauty="无"></li>
+            </ul>
+        </div>
+        <div class="onerow onerow_button">
+            <label>家族遗传病史</label>
+            <ul class="dowebok">
+                <li><input type="radio" class="yes_heredopathia" name="heredopathia_man" data-labelauty="有"></li>
+                <li><input type="radio" class="no_heredopathia" name="heredopathia_man" data-labelauty="无"></li>
+            </ul>
+        </div>
+        <div class="heredopathia">
+            <label>遗传病名称</label>
+            <input type="text" v-model="genetic_disease_man" placeholder="请填写遗传病名称"/>
+        </div>
+        <div class="onerow onerow_button">
+            <label>精液量</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="semen_volume" data-labelauty="正常"></li>
+                <li><input type="radio" name="semen_volume" data-labelauty="少"></li>
+            </ul>
+        </div>
+        <div class="onerow onerow_button">
+            <label>精子浓度</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="semen_concentration" data-labelauty="正常"></li>
+                <li><input type="radio" name="semen_concentration" data-labelauty="稀少"></li>
+            </ul>
+        </div>
+        <div class="onerow onerow_button">
+            <label>手淫史</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="masturbation" data-labelauty="有"></li>
+                <li><input type="radio" name="masturbation" data-labelauty="无"></li>
+            </ul>
+        </div>
+        <div class="onerow">
+            <label>禁欲天数</label>
+            <input class="inputl" id="abstinence" v-model="abstinent_days" name="abstinence" type="text"
+                   placeholder="请填写禁欲天数">
+            <span class="abstinence_propt">请输入数字</span>
+        </div>
+    </div>
+
+
+    <!--性别选择女时-->
+    <div class="woman">
+        <div class="onerow onerow_button">
+            <label>治疗及手术史</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="operation_women" data-labelauty="有"></li>
+                <li><input type="radio" name="operation_women" data-labelauty="无"></li>
+            </ul>
+        </div>
+        <div class="onerow onerow_button">
+            <label>家族遗传病史</label>
+            <ul class="dowebok">
+                <li><input type="radio" class="yes_heredopathia" name="heredopathia_women" data-labelauty="有"></li>
+                <li><input type="radio" class="no_heredopathia" name="heredopathia_women" data-labelauty="无"></li>
+            </ul>
+        </div>
+        <div class="heredopathia">
+            <label>遗传病名称</label>
+            <input type="text" v-model="genetic_disease_women" placeholder="请填写遗传病名称"/>
+        </div>
+
+        <div class="onerow onerow_button">
+            <label>喝酒</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="drink" data-labelauty="有"></li>
+                <li><input type="radio" name="drink" data-labelauty="无"></li>
+            </ul>
+        </div>
+        <div class="onerow onerow_button">
+            <label>抽烟</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="smoking" data-labelauty="有"></li>
+                <li><input type="radio" name="smoking" data-labelauty="无"></li>
+            </ul>
+        </div>
+
+        <div class="onerow onerow_button">
+            <label>生育史</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="birth" data-labelauty="有" id="yes_birth"></li>
+                <li><input type="radio" name="birth" data-labelauty="无" id="no_birth"></li>
+            </ul>
+        </div>
+        <div class="birth birth_top">
+            <p>
+                <span>生育时间</span>
+                <input value="" class="fr col-blue popup_choice appdata app_Date" readonly="readonly" name="appDate"
+                       id="appDate" type="text" placeholder="请选择生育时间">
+                <span class="float_right"><i></i></span>
+            </p>
+        </div>
+        <div class="birth birth_bottom">
+            <p class="btn_click_fade" data-popUp="bear">
+                <span>生育方式</span>
+                <span class="float_right bear">请选择生育方式</span>
+                <span class="float_right"><i></i></span>
+            </p>
+        </div>
+
+        <div class="onerow onerow_button">
+            <label>药物过敏史</label>
+            <ul class="dowebok">
+                <li><input type="radio" name="medicine_allergy" data-labelauty="有" id="yes_medicine"></li>
+                <li><input type="radio" name="medicine_allergy" data-labelauty="无" id="no_medicine"></li>
+            </ul>
+        </div>
+        <div class="medicine">
+            <label>药物名称</label>
+            <input type="text" v-model="allergy" placeholder="请填写药物名称"/>
+        </div>
+    </div>
+
+
+    <div class="card-describe-group">
+        <textarea class="card-describe" v-model="content" placeholder="请填写病情描述"></textarea>
+    </div>
+    <input class="submit-btn" value="提交" type="button" @click="commit">
+
+    <div class="pop-up_layer" data-popUp="bear">
+        <div class="layer_main">
+            <div class="onerow1">
+                <input type="radio" id="bear-eutocia" name="bear" value="bear-eutocia" checked='checked'/>
+                <label for="bear-eutocia">顺产</label>
+                <input type="radio" id="bear-cesarean" name="bear" value="bear-cesarean"/>
+                <label for="bear-cesarean">剖腹产</label>
+            </div>
+            <div class="pop-up-footer">
+                <button class="bear_btn_close" @click="dismiss">确定</button>
+            </div>
+        </div>
+    </div>
+    <!--选择-->
+</section>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-labelauty.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/common/mobiscroll_002.js" type="text/javascript"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/common/mobiscroll_004.js" type="text/javascript"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/common/mobiscroll.js" type="text/javascript"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/common/mobiscroll_003.js" type="text/javascript"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/common/mobiscroll_005.js" type="text/javascript"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/common/mobiscroll_006.js" type="text/javascript"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/common/free_consultation.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/pop-up_layer.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/easemob/webim.config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/easemob/strophe-1.2.8.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/easemob/websdk-1.1.3.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/medical_record_sex.js"></script>
+
+</body>
+</html>

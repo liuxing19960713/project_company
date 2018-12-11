@@ -1,0 +1,86 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "plupload_2.1.9@0.0.1",
+        "scope": null,
+        "escapedName": "plupload_2.1.9",
+        "name": "plupload_2.1.9",
+        "rawSpec": "0.0.1",
+        "spec": "0.0.1",
+        "type": "version"
+      },
+      "/Users/fio/Sites/yueso"
+    ]
+  ],
+  "_from": "plupload_2.1.9@0.0.1",
+  "_id": "plupload_2.1.9@0.0.1",
+  "_inCache": true,
+  "_location": "/plupload_2.1.9",
+  "_nodeVersion": "6.3.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/plupload_2.1.9-0.0.1.tgz_1484398033558_0.33265584358014166"
+  },
+  "_npmUser": {
+    "name": "ken1987",
+    "email": "327919523@qq.com"
+  },
+  "_npmVersion": "3.10.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "plupload_2.1.9@0.0.1",
+    "scope": null,
+    "escapedName": "plupload_2.1.9",
+    "name": "plupload_2.1.9",
+    "rawSpec": "0.0.1",
+    "spec": "0.0.1",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/plupload_2.1.9/-/plupload_2.1.9-0.0.1.tgz",
+  "_shasum": "ee0f83f7ec5f2cd295e57542d870c04b4e62f308",
+  "_shrinkwrap": null,
+  "_spec": "plupload_2.1.9@0.0.1",
+  "_where": "/Users/fio/Sites/yueso",
+  "author": {
+    "name": "Moxiecode Systems AB",
+    "email": "support@moxiecode.com"
+  },
+  "bugs": {
+    "url": "https://github.com/moxiecode/plupload/issues"
+  },
+  "dependencies": {},
+  "description": "plupload.js v2.1.9",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "ee0f83f7ec5f2cd295e57542d870c04b4e62f308",
+    "tarball": "https://registry.npmjs.org/plupload_2.1.9/-/plupload_2.1.9-0.0.1.tgz"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "homepage": "http://plupload.com",
+  "keywords": [
+    "plupload"
+  ],
+  "main": "plupload.full.min.js",
+  "maintainers": [
+    {
+      "name": "ken1987",
+      "email": "327919523@qq.com"
+    }
+  ],
+  "name": "plupload_2.1.9",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moxiecode/plupload.git"
+  },
+  "scripts": {},
+  "version": "0.0.1"
+}

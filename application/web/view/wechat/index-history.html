@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>咨询医生</title>
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/global.css" rel="stylesheet">
+    <link href="{$Think.PUBLIC_PATH}/static/css/wechat/styles.css" rel="stylesheet">
+</head>
+<body>
+<form class="headerbar-form">
+    <input type="text" name="q" class="form-control" placeholder="症状、疾病、医生名、科室">
+    <span class="btn-flat"><i></i></span>
+    <button type="submit" name="search" id="search-btn" class="search-button">搜索</button>
+</form>
+<section id="app" class="Palace-display">
+    <p class="accounding_doctor">按科室找医生</p>
+    <span class="accounding_doctor_underline"></span>
+    <ul class="palace-group clearfix index_box">
+        <a class="item">
+            <li class="top_li">
+                <span class="medical-icon"><i class="dk-gynaecology"></i></span>
+                <p class="medical－name">妇科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li class="top_li">
+                <span class="medical-icon"><i class="dk-pediatrics"></i></span>
+                <p class="medical－name">儿科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li class="top_li">
+                <span class="medical-icon"><i class="dk-infertility"></i></span>
+                <p class="medical－name">不孕不育</p>
+            </li>
+        </a>
+        <a class="item">
+            <li class="top_li">
+                <span class="medical-icon"><i class="dk-skin"></i></span>
+                <p class="medical－name">皮肤科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-medicine"></i></span>
+                <p class="medical－name">内科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-andrology"></i></span>
+                <p class="medical－name">男科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-obstetrics"></i></span>
+                <p class="medical－name">产科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-tube_body"></i></span>
+                <p class="medical－name">试管婴儿</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-orthopedics"></i></span>
+                <p class="medical－name">骨伤科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-chinese_medicine"></i></span>
+                <p class="medical－name">中医科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-surgery"></i></span>
+                <p class="medical－name">外科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-maxillofacial"></i></span>
+                <p class="medical－name">口腔颌面科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-psychology"></i></span>
+                <p class="medical－name">精神心理科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-eye"></i></span>
+                <p class="medical－name">眼科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-ear"></i></span>
+                <p class="medical－name">耳鼻咽喉科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-plastic"></i></span>
+                <p class="medical－name">整形美容科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-tumour"></i></span>
+                <p class="medical－name">肿瘤防治科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-presentation"></i></span>
+                <p class="medical－name">报告解读科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li>
+                <span class="medical-icon"><i class="dk-nutrition"></i></span>
+                <p class="medical－name">营养科</p>
+            </li>
+        </a>
+        <a class="item">
+            <li class="empty_li">
+                <span class="medical-icon"><i class="dk-null"></i></span>
+                <p class="medical－name">&nbsp;</p>
+            </li>
+        </a>
+
+    </ul>
+    <!--<p class="record_href">
+        <a href="htmls/user-record_bat.html">问诊记录<span>>></span></a>
+    </p>-->
+    <!--锚点-->
+    <a name="history"></a>
+    <section class="record_section">
+        <nav class="headerbar-nav clearfix">
+            <ul class="record-header">
+                <li>
+                    <a href="{$Think.WEB_PATH}wechat/index" class="record">
+                        当前服务
+                    </a>
+                </li>
+                <li>
+                    <a class="record active">
+                        历史服务
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <section class="record-list">
+            <div class="record-info clearfix" v-for="item in list">
+                <dl class="record-info-list" @click="enterChatRecord(item.con_id,item.d_id)">
+                    <dd>{{item.real_name}}</dd>
+                    <dd>{{item.department}}</dd>
+                    <dd>图文咨询</dd>
+                    <span class="fr line-4rem grap float_fr">{{item.create_time|timePaser}}</span>
+                </dl>
+                <p class="record-detail">{{item.content}}</p>
+                <div class="href_box">
+                    <a class="record-asset" @click="evaluate(item.con_id,item.d_id)">
+                        <span class="icon-asset_history"><i></i></span>
+                        评价TA
+                    </a>
+                </div>
+            </div>
+            <!--此处为提醒无更多内容块-->
+            <div class="no_more_content">
+                <h3 class="">没有更多内容</h3>
+            </div>
+        </section>
+    </section>
+</section>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/jquery-1.10.2.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/utils.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/config.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/vue.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/moment.min.js"></script>
+<script src="{$Think.PUBLIC_PATH}/static/js/wechat/logic/index_history.js"></script>
+</body>
+</html>
