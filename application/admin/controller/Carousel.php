@@ -4,8 +4,9 @@ namespace app\Admin\controller;
 
 use think\Controller;
 use think\Request;
-
-class Carousel extends Controller
+use think\Db;
+use app\Admin\model\CarouselModel;
+class Carousel extends Base
 {
     /**
      * 显示资源列表
@@ -15,6 +16,9 @@ class Carousel extends Controller
     public function index()
     {
         //
+        $count = count($info = db("carousel")->select());
+        $title = "轮播图列表";
+        return $this->fetch("Carousel/index",['title'=>$title,"count"=>$count,"info"=>$info]);
     }
 
     /**
@@ -24,7 +28,8 @@ class Carousel extends Controller
      */
     public function create()
     {
-        //
+        
+        return $this->fetch("Carousel/create",['title'=>'轮播图添加']);
     }
 
     /**
@@ -36,6 +41,17 @@ class Carousel extends Controller
     public function save(Request $request)
     {
         //
+        $res    = $request->param();
+        $res['addtime'] = date("Y-m-d H:i:s",time());
+        
+        $data   = new CarouselModel($res);
+        // 过滤post数组中的非数据表字段数据
+        $result         = $data->allowField(true)->save();
+        if ($result) {
+            return 'ok';
+        }else{
+            return 'error';
+        }
     }
 
     /**
@@ -81,5 +97,12 @@ class Carousel extends Controller
     public function delete($id)
     {
         //
+        // $res = CarouselModel::destroy($id);
+        $res = CarouselModel::where('id',$id)->delete();
+        if ($res) {
+           return ['code'=>1,'message'=>'操作完成'];
+        }else{
+            return ['code'=>-1,'message'=>'操作失败'];
+        }
     }
 }
