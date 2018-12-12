@@ -21,24 +21,24 @@
     <table id="DoctorTab" border="1">
         <tr>
             <th width="5%">ID</th>
-            <th>链接名称</th>
-            <th>链接URL</th>
-            <<th>所属公司</th>
+            <th>标签名称</th>
+            <th>标签URL</th>
+            <<th>是否推荐</th>
             <th>最新修改时间</th>
             <th>操作</th>
         </tr>
         <!-- 开始循环 -->
-        {volist name='info' id='link'}
+        {volist name='info' id='vo'}
         <tr>
-           <td>{$link.id}</td>
-           <td>{$link.title}</td>
-           <td>{$link.url}</td>
-           <td>{$link.memo}</td>
-           <td>{$link.addtime}</td>
+           <td>{$vo.id}</td>
+           <td>{$vo.title}</td>
+           <td>{$vo.label_url}</td>
+           <td>{$vo.is_reco}</td>
+           <td>{$vo.addtime}</td>
            <td>
-              <button class={$link.id}   onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
+              <button class={$vo.id}   onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
                 &nbsp;&nbsp;&nbsp;
-                <button class={$link.id}  onclick="DeleteData(this)" style="color:#ff2251"><i class="fa fa-trash-o"></i>删除</button>
+                <button class={$vo.id}  onclick="DeleteData(this)" style="color:#ff2251"><i class="fa fa-trash-o"></i>删除</button>
            </td>
         </tr>
         {/volist}
@@ -65,15 +65,15 @@
     }
 
     //当初始选项发生改变时跳转
-    $('#filter').change(function(){
-        //获取选项的值
-        var val = $("#filter option:selected").val();
-        if(val == '医生列表') {
-            location.reload();
-        } else if(val == '用户列表') {
-            window.location.href = "../../admin/user/index.html";
-        }
-    });
+    // $('#filter').change(function(){
+    //     //获取选项的值
+    //     var val = $("#filter option:selected").val();
+    //     if(val == '医生列表') {
+    //         location.reload();
+    //     } else if(val == '用户列表') {
+    //         window.location.href = "../../admin/user/index.html";
+    //     }
+    // });
     //添加文章
     function AddData(){
         window.location.href = "create";

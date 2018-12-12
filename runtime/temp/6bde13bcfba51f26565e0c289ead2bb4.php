@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Link\index.html";i:1544515245;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Link\index.html";i:1544611640;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,8 +32,9 @@
         <?php if(is_array($info) || $info instanceof \think\Collection || $info instanceof \think\Paginator): $i = 0; $__LIST__ = $info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$link): $mod = ($i % 2 );++$i;?>
         <tr>
            <td><?php echo $link['id']; ?></td>
-           <td><?php echo $link['memo']; ?></td>
+           <td><?php echo $link['title']; ?></td>
            <td><?php echo $link['url']; ?></td>
+           <td><?php echo $link['memo']; ?></td>
            <td><?php echo $link['addtime']; ?></td>
            <td>
               <button class=<?php echo $link['id']; ?>   onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
