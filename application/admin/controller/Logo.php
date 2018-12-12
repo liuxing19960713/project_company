@@ -1,12 +1,11 @@
 <?php
-//医生模块
+//Logo管理
 namespace app\Admin\controller;
 
 use think\Controller;
 use think\Request;
 use think\Db;
-
-class Cdoctor extends Base
+class Logo extends Base
 {
     /**
      * 显示资源列表
@@ -15,11 +14,10 @@ class Cdoctor extends Base
      */
     public function index()
     {
-        //
-        $count = count($info = DB::table("yyb_cdoctor") ->paginate(6));
-        return $this->fetch("Cdoctor/index",['info'=>$info,'count'=>$count,'title'=>'医生管理模块']);
-
-
+        //显示所有的logo
+        $count = count($info = DB::table("yyb_logo")->paginate(5));
+        $title = "logo列表";
+        return $this->fetch("Logo/index",["info"=>$info,"count"=>$count,"title"=>$title]);
     }
 
     /**
@@ -30,7 +28,8 @@ class Cdoctor extends Base
     public function create()
     {
         //
-        return $this->fetch("Cdoctor/add");
+        $title = '添加logo';
+        return $this->fetch("Logo/create",['title'=>$title]);
     }
 
     /**
@@ -42,13 +41,13 @@ class Cdoctor extends Base
     public function save(Request $request)
     {
         //
-        $data               =   $request->param();
-        $data['addtime']    =   date('Y-m-d H:i:s',time());
-        // var_dump($data);
-        if (DB::table("yyb_cdoctor")->insert($data)) {
-            return $this->success("操作ok","Cdoctor/index");
+        $data = $request->param();
+        $data['addtime'] = date("Y-m-d H:i:s",time());
+
+        if (db('logo')->insert($data)) {
+            return 'ok';
         }else{
-            return $this->error("操作error","Cdoctor/create");
+            return 'error';
         }
     }
 
@@ -71,16 +70,17 @@ class Cdoctor extends Base
      */
     public function edit($id)
     {
-        $DoctorData   = Db::table("yyb_cdoctor")->where("id",$id)->find();
-        $title        = "编辑医生";
-        //创建七牛云Token
+        //
+        $DoctorData = db("logo") ->where("id" ,$id) ->find();
+        $title      = "logo的编辑";
+          //创建七牛云Token
         $AccessKey = "HbqYHSMA_unefuplEetlRjS3Acwje2fe3wLfuKjn";
         $SecretKey = "2f2ZeK8kvQAzd_LHGymmDtZsJgniXbL0zgGTOiw4";
         $Bucket = "video1";
         $Domain = "cdn.uyihui.cn";
         $QnToken = $this -> QnToken("HbqYHSMA_unefuplEetlRjS3Acwje2fe3wLfuKjn","2f2ZeK8kvQAzd_LHGymmDtZsJgniXbL0zgGTOiw4","video1");
-        // var_dump($info);
-        return $this->fetch("Cdoctor/edit",['DoctorData'=>$DoctorData,'title'=>$title,'QnToken'=>$QnToken]);
+        // var_dump($detail);
+        return $this->fetch("Logo/Alert",['DoctorData'=>$DoctorData,'QnToken'=>$QnToken,'title'=>$title]);
     }
 
     public function Qiniu() {
@@ -92,7 +92,6 @@ class Cdoctor extends Base
         $QnToken = $this -> QnToken("HbqYHSMA_unefuplEetlRjS3Acwje2fe3wLfuKjn","2f2ZeK8kvQAzd_LHGymmDtZsJgniXbL0zgGTOiw4","video1");
         echo $QnToken;
     }
-
     /**
      * 保存更新的资源
      *
@@ -102,20 +101,18 @@ class Cdoctor extends Base
      */
     public function update(Request $request, $id)
     {
-        //源数据
-        $info = DB::table("yyb_cdoctor")-> where("id",$id) ->find();
-        //去除多余的数据
-        $data = $request-> except(['/admin/cdoctor/update','id']);
-        if ($data['img_url']=="") {
-            $data['img_uirl'] = $info['img_url'];
-
-        }  
-        $res = DB::table("yyb_cdoctor")->where("id",$id)->update($data);
-        if ($res) {
-            return "ok";
-        }else{
-            return "error";
+        //
+        $res  =  $request->except(['/admin/Logo/update','id']);
+        $info = db("logo")->where("id",$id)->find();
+        if ($res['img_url'] == "") {
+            $res['img_url'] = $info['img_url'];
         }
+        if (db("logo")->where("id",$id)->update($res)) {
+            return 'ok';
+        }else{
+            return 'error';
+        }
+        var_dump($res);
     }
 
     /**
@@ -127,32 +124,13 @@ class Cdoctor extends Base
     public function delete($id)
     {
         //
-        // var_dump($id);
-        if (DB::table("yyb_cdoctor")->where("id",$id)->delete()) {
-            return "删除ok";
-        }else{ 
-            return "删除error";
-        }
-    }
-
-    /**
-     * 修改医生的状态
-     */
-    public function status(Request $request,$id)
-    {
-        // var_dump($id);
-        $info = DB::table("yyb_cdoctor")-> where("id",$id)-> find();
-        // var_dump($info);
-        if ($info['status'] == 1) {
-            // var_dump('1');
-            Db::table("yyb_cdoctor")-> where("id", $id)-> update(['status'=>'0']);
-            return '更改ok';
+        $data    = db('logo')->delete($id);
+        
+        if($data) {
+            return ['code'=>1,'message'=>'操作完成'];
         }else{
-            Db::table('yyb_cdoctor')-> where('id', $id)-> update(['status' => '1']);
-            return '更改ok';
+            return ['code'=>-1,'message'=>'操作完成'];
         }
-       
-    }
 
-     
+    }
 }

@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:88:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Column\create.html";i:1544585746;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:89:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Subject\create.html";i:1544586748;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>添加栏目</title>
+<title><?php echo $title; ?></title>
 <link rel="shortcut icon" href="favicon.ico">
 <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
 <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
@@ -22,19 +22,79 @@
         <div class="col-sm-10">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>添加栏目</h5>
+                    <h5><?php echo $title; ?></h5>
                 </div>
                 <div class="ibox-content">
-                    <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+               <!--      <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">栏目名称：</label>
+                            <label class="col-sm-3 control-label">专题标题</label>
+                            <div class="input-group col-sm-7">
+                                <input id="title" type="text" class="form-control" name="title" required aria-required="true">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专题关键字</label>
+                            <div class="input-group col-sm-7">
+                                <input id="keywords" type="text" class="form-control" name="keywords" required aria-required="true">
+                            </div>
+                        </div>
+                        
+                       
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专题内容：</label>
+                            <div class="input-group col-sm-7" id="editor-container">
+                                <textarea name="descr"  id="content" style="height:500px;"></textarea>
+                            </div>
+                        </div>
+
+                       
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" type="submit">确认提交</button>
+                                <a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
+                            </div>
+                        </div>
+                    </form> -->
+                      <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">文章标题：</label>
                             <div class="input-group col-sm-7">
                                 <input id="title" type="text" class="form-control" name="title" required aria-required="true">
                             </div>
                         </div>
                         
 
-                       
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">关键字：</label>
+                            <div class="input-group col-sm-1">
+                                <input id="views_count" type="text" class="form-control" name="keywords" required aria-required="true">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">缩略图：</label>
+                            <input name="img_url" id="img_url" type="hidden"/>
+                            <div class="form-inline"  id="container">
+                                <div class="input-group col-sm-2">
+                                    <img id="imgshow" name="img_url"  style="width: 100px;height:100px; margin-right:5px;" />
+                                    <button type="button" class="layui-btn" id="pickfile">
+                                        <i class="layui-icon">&#xe67c;</i>上传图片
+                                    </button>
+                                </div>
+                                <div class="input-group col-sm-3">
+                                    <div id="sm"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">文章内容：</label>
+                            <div class="input-group col-sm-7" id="editor-container">
+                                <textarea name="content"  id="content" style="height:500px;"></textarea>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
                                 <button class="btn btn-primary" type="submit">确认提交</button>
@@ -147,9 +207,9 @@
 </script>
 
 <script>
-    require(['app','editor','qiniuUploader', 'Column/create'],function (app, editor,qiniuUploader, create){
-        // qiniuUploader($("#imgshow"), $("#img_url"), false);
-        // editor('content');
+    require(['app','editor','qiniuUploader', 'Subjectx/create'],function (app, editor,qiniuUploader, create){
+        qiniuUploader($("#imgshow"), $("#img_url"), false);
+        editor('content');
         create();
     });
 

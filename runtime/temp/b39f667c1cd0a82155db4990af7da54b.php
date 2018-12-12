@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\index.html";i:1544525445;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\index.html";i:1544599280;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,6 +96,23 @@
                         <a href="<?php echo url('Column/index'); ?>" class="J_menuItem" >
                         <i class="fa fa-credit-card fa-fw"></i>
                         <span class="nav-label">栏目模块</span>
+                    </a>
+                </li>
+
+                <li class="menu">
+                    <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
+                        <a href="<?php echo url('Subject/index'); ?>" class="J_menuItem" >
+                        <i class="fa fa-credit-card fa-fw"></i>
+                        <span class="nav-label">专题管理</span>
+                    </a>
+                </li>
+
+
+                  <li class="menu">
+                    <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
+                        <a href="<?php echo url('Logo/index'); ?>" class="J_menuItem" >
+                        <i class="fa fa-credit-card fa-fw"></i>
+                        <span class="nav-label">Logo管理</span>
                     </a>
                 </li>
                 <?php endif; ?>

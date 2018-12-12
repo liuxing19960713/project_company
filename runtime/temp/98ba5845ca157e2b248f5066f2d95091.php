@@ -1,10 +1,11 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Logo\index.html";i:1544600699;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{$title}</title>
+    <title><?php echo $title; ?></title>
     <link href="__CSS__/CssReset.css" rel="stylesheet">
     <link href="__CSS__/doctor/doctor.css" rel="stylesheet">
     <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -12,56 +13,39 @@
     <link href="__COMPONENT__/Fm/Fm.css" rel="stylesheet">
 </head>
 <body>
-    <!-- <h3 class="title">{$title}</h3> -->
-    <!-- 筛选 -->
-   <!--  <select name="filter" id="filter">
-        <option value="医生列表">医生列表</option>
-        <option value="用户列表">用户列表</option>
-    </select> -->
-    <!-- add -->
-    <button id="DoctorAddBt" onclick="AddData()">添加医生</button>
-    <!-- 搜索 -->
-<!--     <form id="SearchForm" action="Search" method="get">
-        <input type="text" name="phone" placeholder="输入要搜索的手机号" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" maxlength="11"/>
-        <input type="text" name="name" placeholder="输入要搜索的医生名称"/>
-        <input type="text" name="hospital" placeholder="输入要搜索的医院名称"/>
-        <input type="submit" onclick="" value="搜&nbsp;索">
-    </form> -->
+    <button id="DoctorAddBt" onclick="AddData()">添加Logo</button>
+ 
+    </form>  
     <table id="DoctorTab" border="1">
         <tr>
             <th width="5%">ID</th>
-            <th>头像</th>
-            <th>姓名</th>
-            <th>所在医院</th>
-            <th>职称</th>
-            <th>状态</th>
+            <th>logo缩略图</th>
+            <th>logo名</th>
             <th>最新修改时间</th>
             <th>操作</th>
         </tr> 
         <!-- 开始循环 -->
-        {volist name='info' id='doctor'}
+        <?php if(is_array($info) || $info instanceof \think\Collection || $info instanceof \think\Paginator): $i = 0; $__LIST__ = $info;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
         <tr>
-            <td>{$doctor.id}</td>
+            <td><?php echo $vo['id']; ?></td>
             <td>
-                <img class="DoctorTx ImgMag" src="{$doctor.img_url}" alt="医生头像" onclick="imgmag(this)">
+                <img class="DoctorTx ImgMag" src="<?php echo $vo['img_url']; ?>" alt="医生头像" onclick="imgmag(this)">
             </td>
-            <td>{$doctor.nick_name}</td>
-            <td>{$doctor.hospital}</td>
-            <td>{$doctor.title}</td>
-            <td> <a class={$doctor.id} onclick="Changestatus(this)">{if condition="$doctor.status eq '1'"}显示{else /} 隐藏{/if}</a></td>
-            <td>{$doctor.addtime}</td>
+          
+            <td><?php echo $vo['logo_name']; ?></td>
+            <td><?php echo $vo['addtime']; ?></td>
             <td>
-                <button class={$doctor.id} onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
+                <button class=<?php echo $vo['id']; ?> onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
                 &nbsp;&nbsp;&nbsp;
-                <button class={$doctor.id} onclick="DeleteData(this)" style="color:#ff2251"><i class="fa fa-trash-o"></i>删除</button>
+                <button class=<?php echo $vo['id']; ?> onclick="DeleteData(this)" style="color:#ff2251"><i class="fa fa-trash-o"></i>删除</button>
             </td>
         </tr>
-        {/volist}
+        <?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
     <!-- 总条数 -->
-    <span style="margin:5px 0 0 1%; float:left;">总共{$count}条记录</span>
+    <span style="margin:5px 0 0 1%; float:left;">总共<?php echo $count; ?>条记录</span>
     <!-- 分页按钮 -->
-     {$info->render()}
+     <?php echo $info->render(); ?>
 </body>
 <script src="__JS__/jquery.min.js"></script>
 <!-- 地区选择插件distpicker.js(注意：引入顺序不能错！)-->
@@ -103,7 +87,7 @@
                 type: 'post',
                 data: {'id': id},
                 success: function(data) {
-                    alert(data);
+                    alert(data.message);
                     location.reload();
                 }
             });
@@ -114,34 +98,34 @@
         }
     }
 
-     //更改状态
-    function Changestatus(dom) {
-        // 获取点击元素的id
-        var id = $(dom).attr("class");
-        Popups.Confirm(500,"要更改医生状态吗？","确定","取消",callfun1,callfun2);
-        // 回调函数
-        function callfun1() {
-            $.ajax({
-                url: "status",
-                type: 'post',
-                data: {'id': id},
-                success: function(data) {
-                    alert(data);
-                    location.reload();
-                }
-            });
-        }
-        function callfun2() {
-            // 刷新页面
-            location.reload();
-        }
-    }
+    //  //更改状态
+    // function Changestatus(dom) {
+    //     // 获取点击元素的id
+    //     var id = $(dom).attr("class");
+    //     Popups.Confirm(500,"要更改医生状态吗？","确定","取消",callfun1,callfun2);
+    //     // 回调函数
+    //     function callfun1() {
+    //         $.ajax({
+    //             url: "status",
+    //             type: 'post',
+    //             data: {'id': id},
+    //             success: function(data) {
+    //                 alert(data);
+    //                 location.reload();
+    //             }
+    //         });
+    //     }
+    //     function callfun2() {
+    //         // 刷新页面
+    //         location.reload();
+    //     }
+    // }
 
 
     //跳转编辑信息编辑页面
     function Alter(dom) {
         var id = $(dom).attr("class");
-        window.location.href = "/admin/cdoctor/edit?id=" + id;
+        window.location.href = "/admin/Logo/edit?id=" + id;
     }
 </script>
 </html>

@@ -10,18 +10,15 @@ define(function (){
                 'title': {
                     required: true
                 },
-
-                 'hospital': {
-                    required: true
+                'keywords' : {
+                    required:true
                 },
 
-                // 'nick_name': {
-                //     required: true,
-                //     digits: true
-                // },
-                'content': {
-                    required: true
-                }
+                'descr' : {
+                    required:true
+                },
+
+  
             },
             errorPlacement: function(error, element) {
                 $(error).addClass('alert alert-danger');
@@ -30,25 +27,23 @@ define(function (){
             errorElement: "div",
             messages: {
                 'title': {
-                    required: "职称不能为空",
+                    required: "标题必填",
+                },
+                'keywords': {
+                    required: "关键字不能为空",
                 },
 
-                // 'nick_name': {
-                //     required: "姓名不能为空",
-                //     digits:"姓名不能为空"
-
-                // },
-
-                'hospital': {
-                    required: "所在医院不能为空",
-                    digits:"不能为空"
-
+                'desrc': {
+                    required: "描述不能为空",
                 },
+                // 'url': {
+                //     required: "链接必填",
+                //     digits:"不能为空"
 
-
-                'content': {
-                    required: "介绍不能为空",
-                }
+                // // },
+                // 'content': {
+                //     required: "帖子内容不能为空",
+                // }
             }
 
         });
@@ -56,16 +51,19 @@ define(function (){
         function formSubmit(){
             var submit_data = {
                 'title': $("input[name=title]").val(),
-                'nick_name': $("input[name=nick_name]").val(),
-                'hospital': $("input[name=hospital]").val(),
-                'img_url': $("input[name=img_url]").val(),
+                'keywords': $("input[name=keywords]").val(),
+                // 'desrc': $("textarea[name=content]").val(),
+
+                'desrc': $("#content").val(),
+
+
+                // 'img_url': $("input[name=img_url]").val(),
                 //'video_url': $("input[name=video_url]").val(),
                 //'url': $("input[name=url]").val(),
-                // 'keywords': $("input[name=keywords]").val(),
-                'introduce': $("#content").val()
+                // 'url': $("input[name=url]").val(),
             };
 
-            var url = appConfig.adminPath + 'cdoctor/save';
+            var url = appConfig.adminPath + 'subject/save';
 
             $.loader(true);
             $.ajax({
@@ -86,7 +84,7 @@ define(function (){
                         }],
                         onhide: function(dialogRef){
                             $.loader(true);
-                            location.href = appConfig.adminPath + 'cdoctor/index';
+                            location.href = appConfig.adminPath + 'subject/index';
                         }
                     });
                 },

@@ -7,21 +7,17 @@ define(function (){
             },
             ignore: "",
             rules: {
-                'title': {
+
+                'logo_name': {
                     required: true
                 },
 
-                 'hospital': {
-                    required: true
-                },
-
-                // 'nick_name': {
-                //     required: true,
-                //     digits: true
-                // },
-                'content': {
+                'img_url': {
                     required: true
                 }
+                
+
+               
             },
             errorPlacement: function(error, element) {
                 $(error).addClass('alert alert-danger');
@@ -29,43 +25,29 @@ define(function (){
             },
             errorElement: "div",
             messages: {
-                'title': {
-                    required: "职称不能为空",
+                'logo_name': {
+                    required: "logo名必填",
                 },
 
-                // 'nick_name': {
-                //     required: "姓名不能为空",
-                //     digits:"姓名不能为空"
-
-                // },
-
-                'hospital': {
-                    required: "所在医院不能为空",
-                    digits:"不能为空"
-
-                },
-
-
-                'content': {
-                    required: "介绍不能为空",
+                'img_url': {
+                    required: "logo图片不能为空"
                 }
+             
             }
 
         });
 
         function formSubmit(){
             var submit_data = {
-                'title': $("input[name=title]").val(),
-                'nick_name': $("input[name=nick_name]").val(),
-                'hospital': $("input[name=hospital]").val(),
+                'logo_name': $("input[name=logo_name]").val(),
                 'img_url': $("input[name=img_url]").val(),
                 //'video_url': $("input[name=video_url]").val(),
-                //'url': $("input[name=url]").val(),
+                // //'url': $("input[name=url]").val(),
                 // 'keywords': $("input[name=keywords]").val(),
-                'introduce': $("#content").val()
+                // 'content': $("#content").val()
             };
 
-            var url = appConfig.adminPath + 'cdoctor/save';
+            var url = appConfig.adminPath + 'Logo/save';
 
             $.loader(true);
             $.ajax({
@@ -86,7 +68,7 @@ define(function (){
                         }],
                         onhide: function(dialogRef){
                             $.loader(true);
-                            location.href = appConfig.adminPath + 'cdoctor/index';
+                            location.href = appConfig.adminPath + 'logo/index';
                         }
                     });
                 },

@@ -12,48 +12,31 @@
     <link href="__COMPONENT__/Fm/Fm.css" rel="stylesheet">
 </head>
 <body>
-    <!-- <h3 class="title">{$title}</h3> -->
-    <!-- 筛选 -->
-   <!--  <select name="filter" id="filter">
-        <option value="医生列表">医生列表</option>
-        <option value="用户列表">用户列表</option>
-    </select> -->
-    <!-- add -->
-    <button id="DoctorAddBt" onclick="AddData()">添加医生</button>
-    <!-- 搜索 -->
-<!--     <form id="SearchForm" action="Search" method="get">
-        <input type="text" name="phone" placeholder="输入要搜索的手机号" onkeyup="value=value.replace(/[^\w\.\/]/ig,'')" maxlength="11"/>
-        <input type="text" name="name" placeholder="输入要搜索的医生名称"/>
-        <input type="text" name="hospital" placeholder="输入要搜索的医院名称"/>
-        <input type="submit" onclick="" value="搜&nbsp;索">
-    </form> -->
+    <button id="DoctorAddBt" onclick="AddData()">添加Logo</button>
+ 
+    </form>  
     <table id="DoctorTab" border="1">
         <tr>
             <th width="5%">ID</th>
-            <th>头像</th>
-            <th>姓名</th>
-            <th>所在医院</th>
-            <th>职称</th>
-            <th>状态</th>
+            <th>logo缩略图</th>
+            <th>logo名</th>
             <th>最新修改时间</th>
             <th>操作</th>
         </tr> 
         <!-- 开始循环 -->
-        {volist name='info' id='doctor'}
+        {volist name='info' id='vo'}
         <tr>
-            <td>{$doctor.id}</td>
+            <td>{$vo.id}</td>
             <td>
-                <img class="DoctorTx ImgMag" src="{$doctor.img_url}" alt="医生头像" onclick="imgmag(this)">
+                <img class="DoctorTx ImgMag" src="{$vo.img_url}" alt="医生头像" onclick="imgmag(this)">
             </td>
-            <td>{$doctor.nick_name}</td>
-            <td>{$doctor.hospital}</td>
-            <td>{$doctor.title}</td>
-            <td> <a class={$doctor.id} onclick="Changestatus(this)">{if condition="$doctor.status eq '1'"}显示{else /} 隐藏{/if}</a></td>
-            <td>{$doctor.addtime}</td>
+          
+            <td>{$vo.logo_name}</td>
+            <td>{$vo.addtime}</td>
             <td>
-                <button class={$doctor.id} onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
+                <button class={$vo.id} onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
                 &nbsp;&nbsp;&nbsp;
-                <button class={$doctor.id} onclick="DeleteData(this)" style="color:#ff2251"><i class="fa fa-trash-o"></i>删除</button>
+                <button class={$vo.id} onclick="DeleteData(this)" style="color:#ff2251"><i class="fa fa-trash-o"></i>删除</button>
             </td>
         </tr>
         {/volist}
@@ -103,7 +86,7 @@
                 type: 'post',
                 data: {'id': id},
                 success: function(data) {
-                    alert(data);
+                    alert(data.message);
                     location.reload();
                 }
             });
@@ -114,34 +97,34 @@
         }
     }
 
-     //更改状态
-    function Changestatus(dom) {
-        // 获取点击元素的id
-        var id = $(dom).attr("class");
-        Popups.Confirm(500,"要更改医生状态吗？","确定","取消",callfun1,callfun2);
-        // 回调函数
-        function callfun1() {
-            $.ajax({
-                url: "status",
-                type: 'post',
-                data: {'id': id},
-                success: function(data) {
-                    alert(data);
-                    location.reload();
-                }
-            });
-        }
-        function callfun2() {
-            // 刷新页面
-            location.reload();
-        }
-    }
+    //  //更改状态
+    // function Changestatus(dom) {
+    //     // 获取点击元素的id
+    //     var id = $(dom).attr("class");
+    //     Popups.Confirm(500,"要更改医生状态吗？","确定","取消",callfun1,callfun2);
+    //     // 回调函数
+    //     function callfun1() {
+    //         $.ajax({
+    //             url: "status",
+    //             type: 'post',
+    //             data: {'id': id},
+    //             success: function(data) {
+    //                 alert(data);
+    //                 location.reload();
+    //             }
+    //         });
+    //     }
+    //     function callfun2() {
+    //         // 刷新页面
+    //         location.reload();
+    //     }
+    // }
 
 
     //跳转编辑信息编辑页面
     function Alter(dom) {
         var id = $(dom).attr("class");
-        window.location.href = "/admin/cdoctor/edit?id=" + id;
+        window.location.href = "/admin/Logo/edit?id=" + id;
     }
 </script>
 </html>

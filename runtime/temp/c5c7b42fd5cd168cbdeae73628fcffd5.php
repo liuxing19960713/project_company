@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:84:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\About\add.html";i:1544496604;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:84:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\About\add.html";i:1544586869;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,8 +175,8 @@
 </script>
 
 <script>
-    require(['app','editor','qiniuUploader', 'about/create'],function (app, editor,qiniuUploader, create){
-        qiniuUploader($("#imgshow"), $("#img_url"), false);
+    require(['app','editor','qiniuUploader', 'subject/create'],function (app, editor,qiniuUploader, create){
+        // qiniuUploader($("#imgshow"), $("#img_url"), false);
         editor('content');
         create();
     });

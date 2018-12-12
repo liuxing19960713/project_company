@@ -10,15 +10,10 @@ define(function (){
                 'title': {
                     required: true
                 },
-
-                 'hospital': {
-                    required: true
+                'views_count': {
+                    required: true,
+                    digits: true
                 },
-
-                // 'nick_name': {
-                //     required: true,
-                //     digits: true
-                // },
                 'content': {
                     required: true
                 }
@@ -30,44 +25,33 @@ define(function (){
             errorElement: "div",
             messages: {
                 'title': {
-                    required: "职称不能为空",
+                    required: "标题必填",
                 },
-
-                // 'nick_name': {
-                //     required: "姓名不能为空",
-                //     digits:"姓名不能为空"
-
-                // },
-
-                'hospital': {
-                    required: "所在医院不能为空",
-                    digits:"不能为空"
+                'views_count': {
+                    required: "点击率必填",
+                    digits:"必须为整数"
 
                 },
-
-
                 'content': {
-                    required: "介绍不能为空",
+                    required: "帖子内容不能为空",
                 }
             }
-
         });
 
         function formSubmit(){
             var submit_data = {
+                'id': $("input[name=id]").val(),
                 'title': $("input[name=title]").val(),
-                'nick_name': $("input[name=nick_name]").val(),
-                'hospital': $("input[name=hospital]").val(),
                 'img_url': $("input[name=img_url]").val(),
-                //'video_url': $("input[name=video_url]").val(),
-                //'url': $("input[name=url]").val(),
-                // 'keywords': $("input[name=keywords]").val(),
-                'introduce': $("#content").val()
+                'keywords': $("input[name=keywords]").val(),
+                'content': $("#content").val()
             };
 
-            var url = appConfig.adminPath + 'cdoctor/save';
+            var url = appConfig.adminPath + 'about/doRedact';
+            var history = $("input[name=url]").val();
 
             $.loader(true);
+
             $.ajax({
                 url: url,
                 data: submit_data,
@@ -77,7 +61,7 @@ define(function (){
                     $.loader(false);
                     BootstrapDialog.show({
                         type: BootstrapDialog.TYPE_SUCCESS,
-                        message: '新增成功',
+                        message: '更新成功',
                         buttons: [{
                             label: '关闭',
                             action: function(dialogItself){
@@ -86,7 +70,7 @@ define(function (){
                         }],
                         onhide: function(dialogRef){
                             $.loader(true);
-                            location.href = appConfig.adminPath + 'cdoctor/index';
+                            location.href = appConfig.adminPath + 'about/index';
                         }
                     });
                 },

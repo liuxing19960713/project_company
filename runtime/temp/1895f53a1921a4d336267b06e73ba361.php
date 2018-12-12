@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:88:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Column\create.html";i:1544585746;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:88:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Subject\alter.html";i:1544597026;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>添加栏目</title>
+<title>编辑文章</title>
 <link rel="shortcut icon" href="favicon.ico">
 <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
 <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
@@ -22,19 +22,33 @@
         <div class="col-sm-10">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>添加栏目</h5>
+                    <h5>编辑文章</h5>
                 </div>
                 <div class="ibox-content">
                     <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">栏目名称：</label>
+                            <label class="col-sm-3 control-label">专题标题：</label>
                             <div class="input-group col-sm-7">
-                                <input id="title" type="text" class="form-control" name="title" required aria-required="true">
+                                <input id="title" type="text" class="form-control" name="title" value="<?php echo $info['title']; ?>" required aria-required="true">
+                            </div>
+                        </div>
+                        <input type="hidden" name="id" value="<?php echo $info['id']; ?>"/>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专题关键字：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="views_count" type="text" class="form-control" name="keywords" value="<?php echo $info['keywords']; ?>" required aria-required="true">
                             </div>
                         </div>
                         
-
-                       
+                         
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专题内容：</label>
+                            <div class="input-group col-sm-7" id="editor-container">
+                                <textarea name="desrc"  id="content" style="height:500px;"><?php echo $info['desrc']; ?></textarea>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
                                 <button class="btn btn-primary" type="submit">确认提交</button>
@@ -147,9 +161,9 @@
 </script>
 
 <script>
-    require(['app','editor','qiniuUploader', 'Column/create'],function (app, editor,qiniuUploader, create){
+    require(['app','editor','qiniuUploader', 'subject/edit'],function (app, editor,qiniuUploader, create){
         // qiniuUploader($("#imgshow"), $("#img_url"), false);
-        // editor('content');
+        editor('content');
         create();
     });
 

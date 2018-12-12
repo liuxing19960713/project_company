@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>添加栏目</title>
+<title>{$title}</title>
 {block name="baseCSS"}{include file="base/css" /}{/block}
 </head>
 <body class="gray-bg">
@@ -12,17 +12,32 @@
         <div class="col-sm-10">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>添加栏目</h5>
+                    <h5>{$title}</h5>
                 </div>
                 <div class="ibox-content">
-                    <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+               <!--      <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">栏目名称：</label>
+                            <label class="col-sm-3 control-label">专题标题</label>
                             <div class="input-group col-sm-7">
                                 <input id="title" type="text" class="form-control" name="title" required aria-required="true">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专题关键字</label>
+                            <div class="input-group col-sm-7">
+                                <input id="keywords" type="text" class="form-control" name="keywords" required aria-required="true">
+                            </div>
+                        </div>
                         
+                       
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">专题内容：</label>
+                            <div class="input-group col-sm-7" id="editor-container">
+                                <textarea name="descr"  id="content" style="height:500px;"></textarea>
+                            </div>
+                        </div>
 
                        
                         <div class="form-group">
@@ -31,7 +46,8 @@
                                 <a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
+                    
                 </div>
             </div>
 
@@ -41,9 +57,9 @@
 {block name="baseJS"}{include file="base/js" /}{/block}
 
 <script>
-    require(['app','editor','qiniuUploader', 'Column/create'],function (app, editor,qiniuUploader, create){
-        // qiniuUploader($("#imgshow"), $("#img_url"), false);
-        // editor('content');
+    require(['app','editor','qiniuUploader', 'Subjectx/create'],function (app, editor,qiniuUploader, create){
+        qiniuUploader($("#imgshow"), $("#img_url"), false);
+        editor('content');
         create();
     });
 
