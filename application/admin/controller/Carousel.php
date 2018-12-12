@@ -43,7 +43,7 @@ class Carousel extends Base
         //
         $res    = $request->param();
         $res['addtime'] = date("Y-m-d H:i:s",time());
-        
+
         $data   = new CarouselModel($res);
         // 过滤post数组中的非数据表字段数据
         $result         = $data->allowField(true)->save();
@@ -74,6 +74,26 @@ class Carousel extends Base
     public function edit($id)
     {
         //
+        $DoctorData = db("carousel")->where("id",$id)->find();
+         $title      = "轮播图的编辑";
+          //创建七牛云Token
+        $AccessKey = "HbqYHSMA_unefuplEetlRjS3Acwje2fe3wLfuKjn";
+        $SecretKey = "2f2ZeK8kvQAzd_LHGymmDtZsJgniXbL0zgGTOiw4";
+        $Bucket = "video1";
+        $Domain = "cdn.uyihui.cn";
+        $QnToken = $this -> QnToken("HbqYHSMA_unefuplEetlRjS3Acwje2fe3wLfuKjn","2f2ZeK8kvQAzd_LHGymmDtZsJgniXbL0zgGTOiw4","video1");
+        // var_dump($detail);
+        return $this->fetch("carousel/alert",['DoctorData'=>$DoctorData,'QnToken'=>$QnToken,'title'=>$title]);
+    }
+
+    public function Qiniu() {
+        //创建七牛云Token
+        $AccessKey = "HbqYHSMA_unefuplEetlRjS3Acwje2fe3wLfuKjn";
+        $SecretKey = "2f2ZeK8kvQAzd_LHGymmDtZsJgniXbL0zgGTOiw4";
+        $Bucket = "video1";
+        $Domain = "cdn.uyihui.cn";
+        $QnToken = $this -> QnToken("HbqYHSMA_unefuplEetlRjS3Acwje2fe3wLfuKjn","2f2ZeK8kvQAzd_LHGymmDtZsJgniXbL0zgGTOiw4","video1");
+        echo $QnToken;
     }
 
     /**
@@ -86,6 +106,20 @@ class Carousel extends Base
     public function update(Request $request, $id)
     {
         //
+        $info = db("carousel")->where("id",$id)->find();
+        // var_dump($info);
+        $res  = $request->except(['/admin/carousel/update','id']);
+        if ($res['img_url'] == "") {
+            $res['img_url'] = $info['img_url'];
+        }
+        $result = new CarouselModel();
+        // 过滤post数组中的非数据表字段数据
+        $result->allowField(true)->save($res,['id' => $id]);
+        if ($result) {
+            return 'ok';
+        }else{
+            return 'error';
+        }
     }
 
     /**

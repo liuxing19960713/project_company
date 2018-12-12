@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:89:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Carousel\index.html";i:1544608355;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:89:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Carousel\index.html";i:1544608666;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,7 +137,7 @@
     //跳转编辑信息编辑页面
     function Alter(dom) {
         var id = $(dom).attr("class");
-        window.location.href = "/admin/cdoctor/edit?id=" + id;
+        window.location.href = "/admin/carousel/edit?id=" + id;
     }
 </script>
 </html>
