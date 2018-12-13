@@ -14,26 +14,24 @@
 <body>
  
     <!-- add -->
-    <button id="DoctorAddBt" onclick="AddData()">添加链接</button>
+    <button id="DoctorAddBt" onclick="AddData()">添加SEO关键字</button>
 
     <table id="DoctorTab" border="1">
         <tr>
             <th width="5%">ID</th>
-            <th>标签名称</th>
-            <th>标签URL</th>
-            <th>是否推荐标签</th>
+            <th>seo名称</th>
+            <th>seo关键字</th>
             <th>最新修改时间</th>
             <th>操作</th>
         </tr>
         <!-- 开始循环 -->
-        {volist name='info' id='vo'}
+        {volist name='seo' id='vo'}
         <tr>
            <td>{$vo.id}</td>
            <td>{$vo.title}</td>
-           <td>{$vo.label_url}</td>
+           <td>{$vo.keywords}</td>
 
 
-           <td>{if condition="$vo.is_reco eq '0'"}不推荐{else /} 推荐{/if} </td>
            <td>{$vo.addtime}</td>
            <td>
               <button class={$vo.id}   onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
@@ -46,7 +44,6 @@
     <!-- 总条数 -->
     <span style="margin:5px 0 0 1%; float:left;">总共{$count} 条记录</span>
     <!-- 分页按钮 -->
-    {$info->render()}
 
  
 </body>
@@ -103,7 +100,7 @@
     //跳转编辑信息编辑页面
     function Alter(dom) {
         var id = $(dom).attr("class");
-        window.location.href = "/admin/label/edit?id=" + id;
+        window.location.href = "/admin/Seo/edit?id=" + id;
     }
 </script>
 </html>

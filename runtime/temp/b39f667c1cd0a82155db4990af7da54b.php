@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\index.html";i:1544611800;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\index.html";i:1544686554;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,12 +123,26 @@
                         <span class="nav-label">轮播图管理</span>
                     </a>
                 </li>
+                 <li class="menu">
+                    <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
+                        <a href="<?php echo url('Advert/index'); ?>" class="J_menuItem" >
+                        <i class="fa fa-credit-card fa-fw"></i>
+                        <span class="nav-label">广告图管理</span>
+                    </a>
+                </li>
 
                   <li class="menu">
                     <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
                         <a href="<?php echo url('Label/index'); ?>" class="J_menuItem" >
                         <i class="fa fa-credit-card fa-fw"></i>
                         <span class="nav-label">标签管理</span>
+                    </a>
+                </li>
+                 <li class="menu">
+                    <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
+                        <a href="<?php echo url('Seo/index'); ?>" class="J_menuItem" >
+                        <i class="fa fa-credit-card fa-fw"></i>
+                        <span class="nav-label">首页SEO管理</span>
                     </a>
                 </li>
                 <?php endif; ?>

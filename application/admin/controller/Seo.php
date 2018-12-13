@@ -1,11 +1,13 @@
 <?php
-//标签管理
+//首页SEO内容
 namespace app\Admin\controller;
 
 use think\Controller;
 use think\Request;
 use think\Db;
-class Label extends Base
+//导入模型
+use app\Admin\model\SeoModel;
+class Seo extends Controller
 {
     /**
      * 显示资源列表
@@ -14,10 +16,12 @@ class Label extends Base
      */
     public function index()
     {
-        //总数、数据、分页
-        $count = count($info = db("label")->paginate(5));
-        $title = "标签列表";
-        return $this->fetch("Label/index",['title'=>$title,"count"=>$count,'info'=>$info]);
+        //总数、数据、
+        $count = count($seo = SeoModel::column("id,title,keywords,addtime"));
+        $title = "seo列表";
+        //分配数据
+        return $this -> fetch("Seo/index",['title'=>$title,'count'=>$count,'seo'=>$seo]);
+        
     }
 
     /**
@@ -27,8 +31,8 @@ class Label extends Base
      */
     public function create()
     {
-        $title = "标签添加";
-        return $this->fetch("Label/create",['title'=>$title]);
+        //
+        return $this -> fetch("Seo/set",['title'=>'SEO添加']);
     }
 
     /**
@@ -39,16 +43,17 @@ class Label extends Base
      */
     public function save(Request $request)
     {
-        //
-        $data               =  $request->param();
-        $data['addtime']    =  date("Y-m-d H:i:s",time());
-        $res                =  db("label")->insert($data);
-        if ($res) {
+        $res               = $request -> param();
+        $res['addtime']    = date('Y-m-d H:i:s',time());
+        //调用模型
+        $seo               = new SeoModel($res);
+        // 过滤post数组中的非数据表字段数据
+        $result = $seo -> allowField(true) -> save();
+        if ($result) {
             return 'ok';
-        }else{
-            return "error";
+        } else {
+            return 'error';
         }
-        // var_dump($data);
 
     }
 
@@ -72,8 +77,9 @@ class Label extends Base
     public function edit($id)
     {
         //
-        $info = db("label")->where("id",$id)->find();
-        return $this->fetch("Label/alert",['title'=>'标签编辑','info'=>$info]);
+        $info   = SeoModel::where('id',$id)->find(); 
+        $title  = "SEO编辑";
+        return $this -> fetch("Seo/alert",['subject'=>$title,'info'=>$info]);
     }
 
     /**
@@ -85,14 +91,16 @@ class Label extends Base
      */
     public function update(Request $request, $id)
     {
-        
-       $res     = $request->except(['id','/admin/label/update']);
-       $resd    = db("label")->where("id",$id)->update($res);
-       if ($resd) {
-           return "编辑oK";
-       }else{
-           return "编辑false";
-       }
+        //
+        $res    = $request->except(['id','/admin/Seo/update']);
+        $seo    = new SeoModel;
+        $result = $seo-> where('id', $id)
+                      -> update($res);
+        if ($result) {
+            return "编辑ok";
+        } else {
+            return "编辑error";
+        }
     }
 
     /**
@@ -104,12 +112,5 @@ class Label extends Base
     public function delete($id)
     {
         //
-        $data    = db('label')->delete($id);
-        
-        if($data) {
-            return ['code'=>1,'message'=>'操作完成'];
-        }else{
-            return ['code'=>-1,'message'=>'操作完成'];
-        }
     }
 }

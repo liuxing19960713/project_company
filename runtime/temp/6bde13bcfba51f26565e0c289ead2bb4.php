@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Link\index.html";i:1544611640;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Link\index.html";i:1544663527;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +24,7 @@
             <th width="5%">ID</th>
             <th>链接名称</th>
             <th>链接URL</th>
-            <<th>所属公司</th>
+            <th>所属公司</th>
             <th>最新修改时间</th>
             <th>操作</th>
         </tr>

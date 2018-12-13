@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Cdoctor\edit.html";i:1544666906;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Advert\alert.html";i:1544683003;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +17,8 @@
         <h3 class="h3"><?php echo $title; ?></h3>
         <!-- 头像模块 -->
         <div class="Portrait Box clearfix">
-            <h4 class="h4">头像</h4>
-            <img id="PortraitImg" class="Portrait_img" src="<?php echo $DoctorData['img_url']; ?>" alt="医生头像" onclick="imgmag(this)" >
+            <h4 class="h4">广告图片</h4>
+            <img id="PortraitImg" class="Portrait_img" src="<?php echo $info['img_url']; ?>" alt="医生头像" onclick="imgmag(this)" >
             
             <form id="UpImg-Portrait_img">
                 <input id="UpToken" name="token" type="hidden" value="<?php echo $QnToken; ?>">
@@ -33,49 +33,24 @@
         <div class="Inf Box clearfix">
             <h4 class="h4">基本信息</h4>
             <div class="Box2" style="width: 25%">
-                <h5 class="h5">医生姓名：</h5>
-                <input type="text" style="width: 90%" name="nick_name" value="<?php echo $DoctorData['nick_name']; ?>" placeholder="医生姓名">
+                <h5 class="h5">广告名称</h5>
+                <input type="text" style="width: 90%" name="ad_name" value="<?php echo $info['ad_name']; ?>" placeholder="广告名称">
             </div>
-
-            <div class="Box2" style="width: 25%">
-                <h5 class="h5">所在医院：</h5>
-                <input type="text" style="width: 90%" name="hospital" value="<?php echo $DoctorData['hospital']; ?>" placeholder="医生姓名">
-            </div>
-          
-            <div class="Box2" style="width: 25%">
-                <h5 class="h5">医生职称：</h5>
-                    <input type="text" style="width: 90%" name="title" value="<?php echo $DoctorData['title']; ?>" placeholder="医生职称：">
-            </div>
+           
         </div>
      
      
         <div class="ConFee Box clearfix">
             <div class="Box2" style="width: 100%">
-                <h5 class="h5">医生是否显示</h5>
-                <!-- 是否开启 -->
-                <select name="status" id="is_open_image" style="width: 24%">
-                        <option value="1" 
-                            <?php if($DoctorData['status'] == '1'): ?>
-                                selected
-                            <?php endif; ?>
-                        >显示</option>
-                        <option value="0" 
-                            <?php if($DoctorData['status'] == '0'): ?>
-                                selected
-                            <?php endif; ?>
-                        >隐藏</option>
+                <h5 class="h5">栏目</h5>
+                <!-- 栏目分类 -->
+                <select name="colum_id" id="is_open_image" style="width: 24%">
+                        <?php if(is_array($colum) || $colum instanceof \think\Collection || $colum instanceof \think\Paginator): if( count($colum)==0 ) : echo "" ;else: foreach($colum as $key=>$vo): ?>
+                        <option value="<?php echo $vo['id']; ?>" <?php if($info['colum_id'] ==  $vo['id']): ?> selected <?php endif; ?>><?php echo $vo['title']; ?></option>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
                 </select>
-                
             </div>
-             <div class="Box2" style="width: 50%">
-                <h5 class="h5">介绍</h5>
-                <textarea name="introduce" style="width: 90%;" placeholder="擅长及诊所介绍"><?php echo $DoctorData['introduce']; ?></textarea>
-            </div>
-         
-    
         </div>
-
-     
         <div class="But-Box clearfix">
             <button class="Bt1" onclick="javascript:window.history.back(-1);">取消返回</button>
             <button class="Bt2" onclick="SubmitData();">提交修改</button>
@@ -158,12 +133,10 @@
             // 医生id
             data['id'] = T.GetData('id');
             // 医生基本信息
-            data['nick_name'] = $("input[name='nick_name']").val();
-            data['title'] = $("select[name='title']").val();
+            data['ad_name'] = $("input[name='ad_name']").val();
+            data['colum_id'] = $("select[name='colum_id']").val();
             // 医生科室信息
-            data['hospital'] = $("input[name='hospital']").val();
-            data['status'] = $("select[name='status']").val();
-            data['introduce'] = $("textarea[name='introduce']").val();
+            // data['hospital'] = $("input[name='hospital']").val();
 
             
             //医生标签

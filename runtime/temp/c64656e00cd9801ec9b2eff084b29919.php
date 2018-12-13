@@ -1,10 +1,11 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Seo\index.html";i:1544686641;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{$title}</title>
+    <title><?php echo $title; ?></title>
     <link href="__CSS__/CssReset.css" rel="stylesheet">
     <link href="__CSS__/doctor/doctor.css" rel="stylesheet">
     <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
@@ -14,39 +15,36 @@
 <body>
  
     <!-- add -->
-    <button id="DoctorAddBt" onclick="AddData()">添加链接</button>
+    <button id="DoctorAddBt" onclick="AddData()">添加SEO关键字</button>
 
     <table id="DoctorTab" border="1">
         <tr>
             <th width="5%">ID</th>
-            <th>标签名称</th>
-            <th>标签URL</th>
-            <th>是否推荐标签</th>
+            <th>seo名称</th>
+            <th>seo关键字</th>
             <th>最新修改时间</th>
             <th>操作</th>
         </tr>
         <!-- 开始循环 -->
-        {volist name='info' id='vo'}
+        <?php if(is_array($seo) || $seo instanceof \think\Collection || $seo instanceof \think\Paginator): $i = 0; $__LIST__ = $seo;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
         <tr>
-           <td>{$vo.id}</td>
-           <td>{$vo.title}</td>
-           <td>{$vo.label_url}</td>
+           <td><?php echo $vo['id']; ?></td>
+           <td><?php echo $vo['title']; ?></td>
+           <td><?php echo $vo['keywords']; ?></td>
 
 
-           <td>{if condition="$vo.is_reco eq '0'"}不推荐{else /} 推荐{/if} </td>
-           <td>{$vo.addtime}</td>
+           <td><?php echo $vo['addtime']; ?></td>
            <td>
-              <button class={$vo.id}   onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
+              <button class=<?php echo $vo['id']; ?>   onclick="Alter(this)" style="color:#18a689"><i class="fa fa-paste"></i>编辑</button>
                 &nbsp;&nbsp;&nbsp;
-                <button class={$vo.id}  onclick="DeleteData(this)" style="color:#ff2251"><i class="fa fa-trash-o"></i>删除</button>
+                <button class=<?php echo $vo['id']; ?>  onclick="DeleteData(this)" style="color:#ff2251"><i class="fa fa-trash-o"></i>删除</button>
            </td>
         </tr>
-        {/volist}
+        <?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
     <!-- 总条数 -->
-    <span style="margin:5px 0 0 1%; float:left;">总共{$count} 条记录</span>
+    <span style="margin:5px 0 0 1%; float:left;">总共<?php echo $count; ?> 条记录</span>
     <!-- 分页按钮 -->
-    {$info->render()}
 
  
 </body>
@@ -103,7 +101,7 @@
     //跳转编辑信息编辑页面
     function Alter(dom) {
         var id = $(dom).attr("class");
-        window.location.href = "/admin/label/edit?id=" + id;
+        window.location.href = "/admin/Seo/edit?id=" + id;
     }
 </script>
 </html>

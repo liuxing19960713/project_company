@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{$title}</title>
+{block name="baseCSS"}{include file="base/css" /}{/block}
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-sm-10">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>{$title}</h5>
+                </div>
+                <div class="ibox-content">
+                    <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+						
+						
+						
+						
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">标签名：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="title" type="text" class="form-control" name="title">
+                            </div>
+                        </div>
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">副标题：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="title" type="text" class="form-control" name="sub_title" >
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">标签链接：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="label_url" type="text" class="form-control" name="label_url">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否推荐标签：</label>
+                            <div class="input-group col-sm-3">
+                                <select class="js_top form-control" name="is_reco" id="is_reco">
+                                    <option value="0" selected>请选择</option>
+                                     <option value="0" >否</option>
+                                     <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否添加文章快速链接：</label>
+                            <div class="input-group col-sm-3">
+                                <select class="js_top form-control" name="is_url" id="is_url">
+                                    <option value="0" selected>请选择</option>
+                                     <option value="0" >否</option>
+                                     <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        
+                   
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-8">
+                                <button class="btn btn-primary" type="submit">确认提交</button>
+                        		<a class="btn btn-default" href="javascript:history.back(-1)">返回</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{block name="baseJS"}{include file="base/js" /}{/block}
+
+<script>
+    require(['app','editor','qiniuUploader', 'label/create'],function (app, editor,qiniuUploader, create){
+        // qiniuUploader($("#imgshow"), $("#img_url"), false);
+        // editor('content');
+        create();
+    });
+
+</script>
+</body>
+</html>
