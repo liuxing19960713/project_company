@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\index.html";i:1544686554;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\index.html";i:1544866776;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,13 +68,13 @@
                         <span class="nav-label">医生管理</span>
                     </a>
                 </li>
-
+<!-- 
                 <li class="menu">
                     <a href="http://app.uyihui.cn/admin/doctor_label_admin/" class="J_menuItem" >
                         <i class="iconfont icon-tags-fill"></i>
                         <span class="nav-label">医生标签管理</span>
                     </a>
-                </li>
+                </li> -->
                 <li class="menu">
                     <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
                         <a href="<?php echo url('About/index'); ?>" class="J_menuItem" >
@@ -86,7 +86,7 @@
                  <li class="menu">
                     <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
                         <a href="<?php echo url('Link/index'); ?>" class="J_menuItem" >
-                        <i class="fa fa-credit-card fa-fw"></i>
+                        <i class="fa fa-newspaper-o fa-fw"></i>
                         <span class="nav-label">友情链接</span>
                     </a>
                 </li>
@@ -94,7 +94,7 @@
                  <li class="menu">
                     <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
                         <a href="<?php echo url('Column/index'); ?>" class="J_menuItem" >
-                        <i class="fa fa-credit-card fa-fw"></i>
+                        <i class="fa fa-newspaper-o fa-fw"></i>
                         <span class="nav-label">栏目模块</span>
                     </a>
                 </li>
@@ -119,14 +119,14 @@
                  <li class="menu">
                     <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
                         <a href="<?php echo url('Carousel/index'); ?>" class="J_menuItem" >
-                        <i class="fa fa-credit-card fa-fw"></i>
+                        <i class="fa fa-photo fa-fw"></i>
                         <span class="nav-label">轮播图管理</span>
                     </a>
                 </li>
                  <li class="menu">
                     <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
                         <a href="<?php echo url('Advert/index'); ?>" class="J_menuItem" >
-                        <i class="fa fa-credit-card fa-fw"></i>
+                        <i class="fa fa-photo fa-fw"></i>
                         <span class="nav-label">广告图管理</span>
                     </a>
                 </li>
@@ -134,17 +134,19 @@
                   <li class="menu">
                     <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
                         <a href="<?php echo url('Label/index'); ?>" class="J_menuItem" >
-                        <i class="fa fa-credit-card fa-fw"></i>
+                        <i class="iconfont icon-tags-fill"></i>
                         <span class="nav-label">标签管理</span>
                     </a>
                 </li>
                  <li class="menu">
                     <!-- <a href="http://app.uyihui.cn/admin/doctor_destoon/" class="J_menuItem" > -->
                         <a href="<?php echo url('Seo/index'); ?>" class="J_menuItem" >
-                        <i class="fa fa-credit-card fa-fw"></i>
+                        <i class="fa fa-newspaper-o fa-fw"></i>
                         <span class="nav-label">首页SEO管理</span>
                     </a>
                 </li>
+
+
                 <?php endif; ?>
                 <!-- <li class="menu">
                     <a href="<?php echo url('post/index'); ?>" class="J_menuItem" >
@@ -189,12 +191,12 @@
                     </a>
                 </li> -->
                 <?php if(authCheck2('1')): ?>
-                <li class="menu">
+              <!--   <li class="menu">
                     <a href="<?php echo url('information/index'); ?>" class="J_menuItem" >
                         <i class="fa fa-volume-control-phone fa-fw"></i>
                         <span class="nav-label">咨询管理</span>
                     </a>
-                </li>
+                </li> -->
                 <!--<li class="menu">
                     <a href="<?php echo url('information/index'); ?>" class="J_menuItem" >
                         <i class="fa fa-hospital-o fa-fw"></i>
@@ -202,12 +204,12 @@
                     </a>
                 </li> -->
                 <?php endif; ?>
-                <li class="menu">
+                <!-- <li class="menu">
                     <a href="<?php echo url('tips/index'); ?>" class="J_menuItem" >
                         <i class="fa fa-book fa-fw"></i>
                         <span class="nav-label">优孕攻略</span>
                     </a>
-                </li> 
+                </li>  -->
                <!--  <li class="menu">
                     <a href="<?php echo url('appoint/index'); ?>" class="J_menuItem" >
                         <i class="fa fa-stethoscope fa-fw"></i>
@@ -240,17 +242,17 @@
                     </a>
                 </li> -->
                 <li class="menu">
-                    <a href="<?php echo url('apptags/index'); ?>" class="J_menuItem" >
-                        <i class="fa fa-search-plus fa-fw"></i>
-                        <span class="nav-label">APP搜索关键词管理</span>
+                    <a href="<?php echo url('Article/index'); ?>" class="J_menuItem" >
+                        <i class="iconfont icon-huodongguanli"></i>
+                        <span class="nav-label">文章管理</span>
                     </a>
                 </li> 
-                <li class="menu">
+                <!-- <li class="menu">
                     <a href="<?php echo url('statement/index'); ?>" class="J_menuItem" >
                         <i class="fa fa-info-circle fa-fw"></i>
                         <span class="nav-label">APP声明/帮助</span>
                     </a>
-                </li>
+                </li> -->
              <!--    <li class="menu">
                     <a href="<?php echo url('statement/zhawen'); ?>" class="J_menuItem" >
                         <i class="iconfont icon-huodongguanli"></i>

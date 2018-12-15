@@ -111,6 +111,12 @@ class Seo extends Controller
      */
     public function delete($id)
     {
-        //
+        
+        $result = SeoModel::destroy($id,true);
+        if ($result) {
+            return "操作ok";
+        } else {
+            return "操作error";
+        }
     }
 }

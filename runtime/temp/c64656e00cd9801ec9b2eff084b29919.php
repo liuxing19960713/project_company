@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Seo\index.html";i:1544686641;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Seo\index.html";i:1544689414;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,7 +88,7 @@
                 type: 'post',
                 data: {'id': id},
                 success: function(data) {
-                    alert(data.message);
+                    alert(data);
                     location.reload();
                 }
             });
