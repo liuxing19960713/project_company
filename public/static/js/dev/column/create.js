@@ -10,13 +10,11 @@ define(function (){
                 'title': {
                     required: true
                 },
-                // 'url': {
-                //     required: true,
-                //     digits: true
+                // 'label_url' : {
+                //     required:true
                 // },
-                // 'content': {
-                //     required: true
-                // }
+              
+
             },
             errorPlacement: function(error, element) {
                 $(error).addClass('alert alert-danger');
@@ -25,8 +23,12 @@ define(function (){
             errorElement: "div",
             messages: {
                 'title': {
-                    required: "标题必填",
+                    required: "栏目名必填",
                 },
+                // 'label_url': {
+                //     required: "标签链接不能为空",
+                // },
+                 
                 // 'url': {
                 //     required: "链接必填",
                 //     digits:"不能为空"
@@ -42,14 +44,22 @@ define(function (){
         function formSubmit(){
             var submit_data = {
                 'title': $("input[name=title]").val(),
+                // 'label_url': $("input[name=label_url]").val(),
+                // 'desrc': $("textarea[name=content]").val(),
+                'cate': $("select[name=cate]").val()
+                // 'is_reco': $("select[name=is_reco]").val()
+
+
+                // 'desrc': $("#content").val(),
+
+
                 // 'img_url': $("input[name=img_url]").val(),
                 //'video_url': $("input[name=video_url]").val(),
                 //'url': $("input[name=url]").val(),
                 // 'url': $("input[name=url]").val(),
-                // 'memo': $("#content").val()
             };
 
-            var url = appConfig.adminPath + 'column/save';
+            var url = appConfig.adminPath + 'Column/save';
 
             $.loader(true);
             $.ajax({
@@ -70,7 +80,7 @@ define(function (){
                         }],
                         onhide: function(dialogRef){
                             $.loader(true);
-                            location.href = appConfig.adminPath + 'column/index';
+                            location.href = appConfig.adminPath + 'Column/index';
                         }
                     });
                 },

@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:88:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Column\create.html";i:1544585746;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:88:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Column\create.html";i:1545022130;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>添加栏目</title>
+<title><?php echo $title; ?></title>
 <link rel="shortcut icon" href="favicon.ico">
 <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
 <link href="__CSS__/font-awesome.min.css?v=4.4.0" rel="stylesheet">
@@ -22,19 +22,57 @@
         <div class="col-sm-10">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>添加栏目</h5>
+                    <h5><?php echo $title; ?></h5>
                 </div>
                 <div class="ibox-content">
                     <form id="form" method="post" action="" class="form-horizontal" enctype="multipart/form-data">
+                        
+                        
+                        
+                        
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">栏目名称：</label>
+                            <label class="col-sm-3 control-label">栏目名：</label>
                             <div class="input-group col-sm-7">
-                                <input id="title" type="text" class="form-control" name="title" required aria-required="true">
+                                <input id="title" type="text" class="form-control" name="title">
                             </div>
                         </div>
-                        
+                        <!--<div class="form-group">
+                            <label class="col-sm-3 control-label">副标题：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="title" type="text" class="form-control" name="sub_title" >
+                            </div>
+                        </div>-->
+                       <!--  <div class="form-group">
+                            <label class="col-sm-3 control-label">标签链接：</label>
+                            <div class="input-group col-sm-7">
+                                <input id="label_url" type="text" class="form-control" name="label_url">
+                            </div>
+                        </div>
 
-                       
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否推荐标签：</label>
+                            <div class="input-group col-sm-3">
+                                <select class="js_top form-control" name="is_reco" id="is_reco">
+                                    <option value="0" selected>请选择</option>
+                                     <option value="0" >否</option>
+                                     <option value="1">是</option>
+                                </select>
+                            </div>
+                        </div> -->
+
+                       <div class="form-group">
+                            <label class="col-sm-3 control-label">选择栏目：</label>
+                            <div class="input-group  style="padding-top:6px;">
+                               <select  class="js_top form-control" name="cate" id="cate"  >
+                                    <?php if(is_array($cate) || $cate instanceof \think\Collection || $cate instanceof \think\Paginator): if( count($cate)==0 ) : echo "" ;else: foreach($cate as $key=>$v): ?>
+                                    <option value="<?php echo $v['id']; ?>"><?php echo $v['title']; ?></option>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                </select>
+                            </div>
+                        </div> 
+                        
+                        
+                   
                         <div class="form-group">
                             <div class="col-sm-4 col-sm-offset-8">
                                 <button class="btn btn-primary" type="submit">确认提交</button>

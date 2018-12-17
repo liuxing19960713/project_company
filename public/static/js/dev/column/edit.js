@@ -29,6 +29,8 @@ define(function (){
             var submit_data = {
                 'id': $("input[name=id]").val(),
                 'title': $("input[name=title]").val(),
+                'cate': $("select[name=cate]").val()
+
                
             };
 

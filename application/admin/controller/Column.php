@@ -57,8 +57,10 @@ class Column extends Controller
      */
     public function create()
     {
-         
-        return $this->fetch("Column/create");
+        $cate = db("newssort") -> select();
+        $title= "栏目添加";
+        // var_dump($cate);die;
+        return $this->fetch("Column/create",['cate'=>$cate,'title'=>$title]);
 
 
     }
@@ -73,13 +75,31 @@ class Column extends Controller
     {
          
         $data = $request->param();
-        $data['addtime'] = date("Y-m-d H:i:s",time());
+        $cate = $data['cate'];
         // var_dump($data);
-        if (DB::table("yyb_newssort")->insert($data)) {
-            return $this->success("ok","column/index");
-        }else{
-            return $this->error("error","column/create");
+
+        $data['addtime'] = date("Y-m-d H:i:s",time());
+        $id = db('newssort') -> insertGetId($data);
+        // var_dump($id);
+        $info = db('newssort') -> where("id",$id)->find();
+        // var_dump($info);
+        $path = '0'.','.$id.','.$cate;
+        // var_dump($path);
+        $result = db("newssort")->where("id",$id)->update(['sortpath' => $path]);
+        if ($result) {
+            return "ok";
+        } else{
+            return "error";
         }
+
+        // $data['']
+        // var_dump($data);
+        // if (DB::table("yyb_newssort")->insert($data)) {
+        //     return $this->success("ok","column/index");
+        // }else{
+        //     return $this->error("error","column/create");
+        // }
+
     }
 
     /**
@@ -102,8 +122,9 @@ class Column extends Controller
     public function edit($id)
     {
         //
-        $info = DB::table("yyb_newssort")->where("id",$id)->find();
-        return $this->fetch("Column/edit",['info'=>$info]);
+        $info = DB::table("yyb_newssort") -> where("id",$id) -> find();
+        $cate = db("newssort") -> select();
+        return $this->fetch("Column/edit",['info'=>$info,'cate'=>$cate]);
     }
 
     /**
@@ -118,6 +139,11 @@ class Column extends Controller
         //
         // var_dump($id);
         $data   = $request->except(['id']);
+        $info   = db("newssort") -> where("id",$id)->find();
+        if ($data['cate']  != $info['cate']) {
+            $path = '0'.','.$id.','.$data['cate'];
+            $data['sortpath'] = $path;
+        }
         // var_dump($data);die;
         $result = DB::table("yyb_newssort")->where("id",$id)->update($data);
         // var_dump($id);

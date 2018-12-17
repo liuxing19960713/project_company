@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:86:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Column\edit.html";i:1544523320;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:86:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\Column\edit.html";i:1545026520;s:83:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\css.html";i:1541563428;s:82:"D:\kaifa\php\PHPTutorial\WWW\Unkonwn\public/../application/admin\view\base\js.html";i:1541563428;}*/ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +32,16 @@
                                 <input id="title" type="text" class="form-control" name="title" value="<?php echo $info['title']; ?>" required aria-required="true">
                             </div>
                         </div>
+                            <div class="form-group">
+                            <label class="col-sm-3 control-label">上一级栏目</label>
+                            <div class="input-group  style="padding-top:6px;">
+                               <select  class="js_top form-control" name="cate" id="cate"  >
+                                    <?php if(is_array($cate) || $cate instanceof \think\Collection || $cate instanceof \think\Paginator): if( count($cate)==0 ) : echo "" ;else: foreach($cate as $key=>$v): ?>
+                                    <option value="<?php echo $v['id']; ?>" <?php if($v['id'] == $info['cate']): ?> selected <?php endif; ?>><?php echo $v['title']; ?></option>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                                </select>
+                            </div>
+                        </div> 
                         
                         <input type="hidden" name="id" value="<?php echo $info['id']; ?>">
                        

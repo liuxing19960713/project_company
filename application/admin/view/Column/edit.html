@@ -22,6 +22,16 @@
                                 <input id="title" type="text" class="form-control" name="title" value="{$info.title}" required aria-required="true">
                             </div>
                         </div>
+                            <div class="form-group">
+                            <label class="col-sm-3 control-label">上一级栏目</label>
+                            <div class="input-group  style="padding-top:6px;">
+                               <select  class="js_top form-control" name="cate" id="cate"  >
+                                    {foreach name="cate" item="v"}
+                                    <option value="{$v.id}" {if condition="$v.id eq $info.cate"} selected {/if}>{$v.title}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                        </div> 
                         
                         <input type="hidden" name="id" value="{$info.id}">
                        

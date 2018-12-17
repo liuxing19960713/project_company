@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+ 
+  
+  <mvc:annotation-driven enable-matrix-variables="true"></mvc:annotation-driven>
+  <context:component-scan base-package="com.th.action"></context:component-scan>
+  <mvc:default-servlet-handler/>
+  <!-- <context:annotation-config></context:annotation-config> -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+ <head> 
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+  <title>{block name="title"}{/block}</title> 
+  <meta name="keywords" content="优韵宝官网,优孕宝官网,优孕宝yoobi,湛江试管婴儿,湛江优孕平台,胚胎移植技术医院" /> 
+  <meta name="description" content="广州优韵宝网络科技有限公司拥有行业领先的免费不孕不育在线咨询平台“优孕宝app”，同时也是广东湛江最尖端最专业试管婴儿优孕服务机构之一，业界唯一一家倡导“不成功不付费”。优韵宝同时拥有最具经验的国际医疗专家团安全护航，十年如一日为客户提供最新试管技术、最优卵子、最强精子、最专业服务团队、最完整全套私人订制优孕方案，好孕热线4009001686。" /> 
+  <script type="text/javascript" src=/static/home/js/jquery-1.11.3.min.js"></script> 
+  <script type="text/javascript" src=/static/home/js/coo.js"></script> 
+  <!--主要样式css--> 
+  <link rel="stylesheet" type="text/css" href="/static/home/css/normalize.css" /> 
+  <!--banner插件 swiper--> 
+  <link rel="stylesheet" href="/static/home/css/idangerous.swiper.css" /> 
+  <script src=/static/home/js/idangerous.swiper.min.js"></script> 
+  <!--自定义js--> 
+  <script src=/static/home/js/public-js.js" type="text/javascript" charset="utf-8"></script> 
+  <!--<script src="js/public-js.js"></script>--> 
+  <link rel="shortcut icon" href="favicon.ico" /> 
+  <link rel="stylesheet" type="text/css" href="/static/home/css/css.css" /> 
+  <link rel="stylesheet" type="text/css" href="/static/home/css/bootstrap.min.css" /> 
+
+
+  <script>
+if($.browser.mobile){
+	window.location.href="http://m.youyunbb.com"; 
+}
+</script>
+  <link href="/static/home/css/video-js.min.css" rel="stylesheet" type="text/css" />
+  <script src="/static/home/js/video.min.js"></script>
+  <script>videojs.options.flash.swf = "/static/home/videojs/video-js.swf";</script>
+ </head>    
+ <body> 
+  <script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https'){
+   bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+  <div id="Header"> 
+   <!-- 公告 --> 
+   <div id="Notice"> 
+    <div class="Notice-Box"> 
+     <span> 欢迎来到广州优韵宝国际医疗 </span> 
+     <!-- 微博二维码 --> 
+     <a class="wei"> <img class="Ico2" src="/static/home/picture/weibo.png" alt="" /> <img class="ewm" src="/static/home/picture/ewm2.png" alt="" /> </a> 
+     <!-- 微信二维码 --> 
+     <a class="wei wei2"> <img class="Ico2" src="/static/home/picture/weixin.png" alt="" /> <img class="ewm" src="/static/home/picture/ewm.jpg" alt="" /> </a> 
+     <a class="A1">最新活动</a> 
+    </div> 
+   </div> 
+   <!-- 头部 --> 
+   <div class="Header_box clearfix"> 
+    <h1><img id="Logo" src="/static/home/picture/logo.jpg" alt="LOGO" /></h1> 
+    <h3>关爱家庭 让爱延续</h3> 
+    <!-- 联系方式 --> 
+    <div class="Lxfs"> 
+     <p class="sp1">24小时客服热线</p> 
+     <p class="sp2">400-9001686</p> 
+    </div> 
+    <img class="Phone" src="/static/home/picture/phone-ico.png" alt="Phone" /> 
+   </div> 
+  </div> 
+
+  {block name="home"}{/block}
+  <!-- 顶部导航栏 --> 
+  
+
+
+
+  <!--页尾--> 
+  <footer class="clearfix"> 
+   <nav class="Botton-Nav-bar center-block clearfix"> 
+    <ul class="center-block text-center"> 
+     <li><a href="/">网站首页</a></li> 
+     <li><a href="combo.html">服务项目</a></li> 
+     <li><a href="team.html">专家团队</a></li> 
+     <li><a href="case.html">成功案例</a></li> 
+     <li><a href="about.html">关于我们</a></li> 
+     <li><a href="advantage.html">独家优势</a></li> 
+     <li><a href="ertai.html">无忧二胎</a></li> 
+    </ul> 
+   </nav> 
+   <nav class="foot center-block"> 
+    <div id="DZ" class="text-center"> 
+     <img src="/static/home/picture/weizhi.jpg" /> 
+     <p>地址：广州市天河区兴民路222号天盈广场</p> 
+    </div> 
+    <div style="float:left;"> 
+     <p><img src="/static/home/picture/dianhua.png" />&nbsp;热线电话&nbsp;:&nbsp;400-900-1686&nbsp;&nbsp;&nbsp;&nbsp;020-38856027</p> 
+     <p><img src="/static/home/picture/yonghu.png" />&nbsp;高级顾问&nbsp;&nbsp;手机/微信&nbsp;:&nbsp;18127919591</p> 
+     <p><img src="/static/home/picture/web.png" />&nbsp;<a href="http://www.youyunbb.com/sitemap.html" style="color:#FFF;" target="_blank">网站地图</a></p> 
+     <p><a href="http://www.miitbeian.gov.cn/" style="color:#FFF;" target="_blank">粤ICP备17014689号-4</a></p> 
+     <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261486240'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261486240%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script> 
+    </div> 
+    <div class="ewm"> 
+     <div> 
+      <img src="/static/home/picture/ewm.jpg" width="121" /> 扫一扫关注我们 
+     </div> 
+    </div> 
+   </nav> 
+   <div class="ylink"> 
+    <ul> 
+     <li>友情链接：</li> 
+     <li><a href="http://www.yybdaiyun.com/" target="_blank">优韵宝医疗</a></li> 
+     <li><a href="http://www.cnzhixiao.net/" target="_blank">湛江白癜风医院</a></li> 
+     <li><a href="http://www.jiubo120.com" target="_blank">九博健康网</a></li> 
+     <li><a href="http://www.iyyc120.com" target="_blank">益阳现代妇女儿童医院</a></li> 
+    </ul> 
+   </div> 
+  </footer> 
+  <script language="javascript" src="/static/home/js/global.js"></script> 
+  <div class="floating_ck"> 
+   <dl> 
+    <dt></dt> 
+    <dd class="Zx"> 
+     <a href="#" id="Zxzx"> <img src="/static/home/picture/zx.png" /> 
+      <div class="floating_left">
+       点击在线咨询
+      </div> </a> 
+    </dd> 
+    <dd class="Dh"> 
+     <img src="/static/home/picture/dh.png" /> 
+     <div class="floating_left">
+      400-900-1686
+     </div> 
+    </dd> 
+    <dd class="Weixin"> 
+     <img src="/static/home/picture/weixin.png" /> 
+     <div class="floating_left floating_ewm"> 
+      <i><img src="/static/home/picture/2weima.png" /></i> 
+      <p class="qrcord_p01">扫一扫<br />关注公众号有惊喜</p> 
+     </div> 
+    </dd> 
+    <dd class="return"> 
+     <img src="/static/home/picture/return.png" /> 
+    </dd> 
+   </dl> 
+  </div> 
+  <script>
+$('.return').click(function(){
+	//alert(0);
+	$(document.body).animate({scrollTop:0}, 500);
+});
+	
+$("#Zxzx").click(function(){
+	window.open("http://pwt.zoosnet.net/LR/Chatpre.aspx?id=PWT31187391&lng=cn"); 
+})
+</script> 
+  <script type="text/javascript">
+var Backtop = $('.return');
+Backtop.on('click',function BackTop(){
+	console.log('触发.Back-top点击事件');
+	$('html,body').animate({scrollTop: '0px'}, 800);
+})
+
+//$(function(){
+//	$(".swtck span").click(function(){
+//		$(".swtck").hide();	
+//		setTimeout(function () { 
+//        	$(".swtck").show();
+//    	}, 20000);
+//	})
+//})
+
+</script> 
+  <!--以下这一段是显示部门和服务项目分组的具体内容，请将其放到网页中您想要显示的位置--> 
+  <script language="javascript">
+document.write('<div id="LR_ServKindlist_Div"></div>');
+</script> 
+  <!--请将以下码嵌入到您网页源代码的最后面，通常是</body></html>之后,这样在LR服务器升级维护的时候也不会影响您的网页打开呈现速度。--> 
+  <script language="javascript" src="/static/home/js/servkind.js"></script> 
+  <script language="javascript">
+//输出HTML函数，技术人员可以修改为自己想要的样式
+var LR_ServKindlistHtml='';
+function outputServKindlist(name,id,state)
+{
+	if(state>=3)
+	{
+		LR_ServKindlistHtml+='<li>'+unescape(name.replace(/\+/g,'%20'))+' [<a href="javascript:openZoosWindow_olist(\'chatwin\',\'&skid='+id+'&sk='+name+'&e='+name+'\')" target="_self"><font style="FONT-SIZE: 12px;COLOR: red;">在线，请点击对话</font></a>]';
+	}
+	else if(state==2)
+	{
+	    LR_ServKindlistHtml += '<li>' + unescape(name.replace(/\+/g, '%20')) + ' [<a href="javascript:void(0)"  onclick="return false;" target="_self"><font style="FONT-SIZE: 12px;COLOR: purple;" onclick=openZoosWindow_olist(\'sendnote\',\'&skid=' + id + '&sk=' + name + '&e=' + name + '\')>繁忙，请点击留言</font></a>]';
+	}
+	else if(state==1)
+	{
+	    LR_ServKindlistHtml += '<li>' + unescape(name.replace(/\+/g, '%20')) + ' [<a href="javascript:void(0)"  onclick="return false;" target="_self"><font style="FONT-SIZE: 12px;COLOR: blue;" onclick=openZoosWindow_olist(\'sendnote\',\'&skid=' + id + '&sk=' + name + '&e=' + name + '\')>离开，请点击留言</font></a>]';
+	}
+	else if(state==0)
+	{
+		LR_ServKindlistHtml+='<li>'+unescape(name.replace(/\+/g,'%20'))+' [<a href="javascript:void(0)"  onclick="return false;" target="_self"><font style="FONT-SIZE: 12px;COLOR: gray;" onclick=openZoosWindow_olist(\'sendnote\',\'&skid=' + id + '&sk=' + name + '&e=' + name + '\')>离线，请点击留言</font></a>]';
+	}
+}
+
+
+if(typeof(ServerKindArray) != 'undefined')
+{
+	LR_ServKindlistHtml+='<ul style="MARGIN-TOP: 10px;">';
+	for(i=0;i<ServerKindArray.length;i++)
+	{
+		outputServKindlist(ServerKindArray[i].name,ServerKindArray[i].id,ServerKindArray[i].state);
+	}
+	LR_ServKindlistHtml+='</ul>';
+}
+</script> 
+  <script language="javascript" src="/static/home/js/lsjs.js"></script>   
+ </body>
+</html>
